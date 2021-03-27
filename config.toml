@@ -1,3 +1,7 @@
-baseURL = "http://example.org/"
+baseURL = "http://example.com"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Yihao's Blog"
+theme = "yblog"
+
+[Permalinks]
+    post = "/:filename/"
