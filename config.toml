@@ -3,6 +3,8 @@ languageCode = "en-us"
 title = "Yihao's Blog"
 theme = "yblog"
 
+pygmentsUseClasses = true
+
 [Permalinks]
     blog = "/:filename/"
 
