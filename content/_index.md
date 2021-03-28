@@ -6,7 +6,7 @@ draft: false
 
 # this is the index page
 
-```go
+```go {linenos=table}
 package main
 
 import (
