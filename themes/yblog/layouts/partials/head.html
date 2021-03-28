@@ -8,10 +8,7 @@
 
     {{ $normalize := resources.Get "/css/normalize.css" | minify }}
     <link rel="stylesheet" href="{{ $normalize.RelPermalink }}">
-  
-    {{ $prism := resources.Get "/css/prism-dark.css" | minify }}
-    <link rel="stylesheet" href="{{ $prism.RelPermalink }}">
 
-    {{ $customStyle := resources.Get "/css/custom.css" | minify}}
-    <link rel="stylesheet" href="{{ $customStyle.RelPermalink }}">
+    {{ $custom := resources.Get "/css/custom.css" | minify}}
+    <link rel="stylesheet" href="{{ $custom.RelPermalink }}">
 </head>

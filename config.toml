@@ -1,7 +1,30 @@
 baseURL = "http://example.com"
 languageCode = "en-us"
-title = "Yihao's Blog"
+title = "Yihao"
 theme = "yblog"
 
 [Permalinks]
     post = "/:filename/"
+    note = "/:filename/"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Posts"
+    url = "/posts/"
+    weight = 2
+
+  [[menu.main]]
+    name = "Notes"
+    url = "/notes/"
+    weight = 3
+
+  [[menu.main]]
+    name = "Projects"
+    url = "/projects"
+    weight = 4
+    

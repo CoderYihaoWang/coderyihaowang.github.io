@@ -1,1 +1,17 @@
-<div>This is the header</div>
+<header>
+  <a href="/" title="Home">{{ site.Title }}</a>
+  <nav>
+    {{ $current := . }}
+        {{ range site.Menus.main }}
+          {{ $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
+          {{ $active = or $active (eq .Name $current.Title) }}
+          {{ $active = or $active (and (eq .Name "Posts") (eq $current.Section "posts")) }}
+          {{ $active = or $active (and (eq .Name "Notes") (eq $current.Section "notes")) }}
+          <li>
+            <a href="{{ .URL }}">
+              <span>{{ .Name }}</span>
+            </a>
+          </li>
+        {{ end }}
+  </nav>
+</header>
