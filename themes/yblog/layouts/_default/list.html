@@ -1,3 +1,12 @@
 {{ define "main" }}
-
+<p>Count: {{ len .Pages }}</p>
+<ul id="list">
+  {{ range .Pages.ByPublishDate.Reverse }}
+  <li>
+    {{ $dateFormat := (print "2006-01-02" | string) }}
+    <span>{{ .PublishDate.Format $dateFormat }}</span>
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  </li>
+  {{ end }}
+</ul>
 {{ end }}
