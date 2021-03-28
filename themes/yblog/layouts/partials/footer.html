@@ -1,3 +1,11 @@
-<div>
-    This is a footer
-</div>
+<footer>
+  {{ range site.Params.footer }}
+    <span>
+    {{ . | plainify | markdownify }} &bull;
+    </span>
+  {{ end }}
+
+  <span>
+    Last updated {{ now.Format "2006-01-02" }}
+  </span>
+</footer>

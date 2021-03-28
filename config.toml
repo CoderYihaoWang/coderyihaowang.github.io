@@ -28,3 +28,8 @@ theme = "yblog"
     url = "/projects"
     weight = 4
     
+[params]
+  footer = [
+    "Made with [Hugo](https://gohugo.io/)",
+    "Content in [GitHub](#)"
+  ]
