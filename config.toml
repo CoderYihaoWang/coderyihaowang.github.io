@@ -1,11 +1,10 @@
 baseURL = "http://example.com"
 languageCode = "en-us"
-title = "Yihao"
+title = "Yihao's Blog"
 theme = "yblog"
 
 [Permalinks]
-    post = "/:filename/"
-    note = "/:filename/"
+    blog = "/:filename/"
 
 [menu]
   [[menu.main]]
@@ -14,13 +13,13 @@ theme = "yblog"
     weight = 1
 
   [[menu.main]]
-    name = "Posts"
-    url = "/posts/"
+    name = "Blog"
+    url = "/blog/"
     weight = 2
 
   [[menu.main]]
-    name = "Notes"
-    url = "/notes/"
+    name = "Tags"
+    url = "/tags/"
     weight = 3
 
   [[menu.main]]

@@ -1,11 +1,19 @@
 {{ define "main" }}
 <p>Count: {{ len .Pages }}</p>
-<ul id="list">
+
+{{ range $name, $taxo := .Site.Taxonomies.tags }}
+  {{ $name }}
+{{ end }}
+
+<ul>
   {{ range .Pages.ByPublishDate.Reverse }}
   <li>
     {{ $dateFormat := (print "2006-01-02" | string) }}
     <span>{{ .PublishDate.Format $dateFormat }}</span>
     <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    {{ range .Params.tags }}
+      <span>#{{- . }}</span>
+    {{ end }}
   </li>
   {{ end }}
 </ul>
