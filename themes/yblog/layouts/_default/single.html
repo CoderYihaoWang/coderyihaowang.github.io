@@ -1,10 +1,10 @@
 {{ define "main" }}
   <h1 class="article-title">{{ .Title }}</h1>
   <div class="article-info-container">
-    <span class="article-info">{{ .PublishDate }}</span>
-    <span class="article-info">{{ .Lastmod }}</span>
-    <span class="article-info">{{ .FuzzyWordCount }}</span>
-    <span class="article-info">{{ .ReadingTime }}</span>
+    <span class="article-info">{{ .FuzzyWordCount }} words</span>
+    <span class="article-info">{{ .ReadingTime }} min reading</span>
+    <span class="article-info">Published: {{ partial "date.html" .PublishDate }}</span>
+    <span class="article-info">Last modified: {{ partial "date.html" .Lastmod }}</span>
     <div class="article-tags-container">
       {{ range .Params.tags }}
         <span class="article-tag">{{ . }}</span>
