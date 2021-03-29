@@ -12,6 +12,9 @@
     {{ $chroma := resources.Get "/css/chroma.css" | minify }}
     <link rel="stylesheet" href="{{ $chroma.RelPermalink }}">
 
+    {{ $fonts := resources.Get "/css/fonts.css" | minify}}
+    <link rel="stylesheet" href="{{ $fonts.RelPermalink }}">
+
     {{ $custom := resources.Get "/css/custom.css" | minify}}
     <link rel="stylesheet" href="{{ $custom.RelPermalink }}">
 </head>

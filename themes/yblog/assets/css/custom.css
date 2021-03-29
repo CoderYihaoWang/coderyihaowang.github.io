@@ -1,40 +1,28 @@
-@font-face {
-    font-family: 'Cousine';
-    font-style: normal;
-    font-weight: 400;
-    src: url('/fonts/cousine/Cousine-Regular.ttf');
+:root {
+  --fg: black;
+  --bg: white;
 }
 
-@font-face {
-font-family: 'Cousine';
-font-style: italic;
-font-weight: 400;
-src: url('/fonts/cousine/Cousine-Italic.ttf');
+.dark:root {
+  --fg: white;
+  --bg: #333;
 }
 
-@font-face {
-font-family: 'Cousine';
-font-style: normal;
-font-weight: 700;
-src: url('/fonts/cousine/Cousine-Bold.ttf');
-}
-
-@font-face {
-font-family: 'Cousine';
-font-style: italic;
-font-weight: 700;
-src: url('/fonts/cousine/Cousine-BoldItalic.ttf');
+body {
+  color: var(--fg);
+  background-color: var(--bg);
+  font-family: "Roboto";
 }
 
 code {
-    font-family: 'Cousine';
-    line-height: 1.5;
+  font-family: "Cousine";
+  line-height: 1.5;
 }
 
 .menu-item {
-    color: cyan;
+  color: cyan;
 }
 
 .menu-item-current {
-    color: orange;
+  color: orange;
 }
