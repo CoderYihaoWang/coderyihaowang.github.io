@@ -6,6 +6,8 @@ draft: false
 
 # this is the index page
 
+> Go fast by going well.
+
 ```go {linenos=table}
 package main
 

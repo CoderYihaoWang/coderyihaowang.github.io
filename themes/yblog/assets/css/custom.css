@@ -1,11 +1,11 @@
 :root {
-  --fg: black;
-  --bg: white;
+  --fg: #000000;
+  --bg: #ffffff;
 }
 
 .dark:root {
-  --fg: white;
-  --bg: #333;
+  --fg: #ffffff;
+  --bg: #2a2b2d;
 }
 
 body {
@@ -25,4 +25,34 @@ code {
 
 .menu-item-current {
   color: orange;
+}
+
+#content {
+  margin: auto;
+  max-width: 1000px;
+}
+
+.article-title {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.article-info-container {
+
+}
+
+.article-info {
+
+}
+
+.article-tags-container {
+
+}
+
+.article-tag {
+  
+}
+
+.article-tag::before {
+  content: "# ";
 }
