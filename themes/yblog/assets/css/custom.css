@@ -1,6 +1,34 @@
+@font-face {
+    font-family: 'Cousine';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/cousine/Cousine-Regular.ttf');
+}
+
+@font-face {
+font-family: 'Cousine';
+font-style: italic;
+font-weight: 400;
+src: url('/fonts/cousine/Cousine-Italic.ttf');
+}
+
+@font-face {
+font-family: 'Cousine';
+font-style: normal;
+font-weight: 700;
+src: url('/fonts/cousine/Cousine-Bold.ttf');
+}
+
+@font-face {
+font-family: 'Cousine';
+font-style: italic;
+font-weight: 700;
+src: url('/fonts/cousine/Cousine-BoldItalic.ttf');
+}
+
 code {
-    font-family: 'Courier New', Courier, monospace !important;
-    line-height: 1.5 !important;
+    font-family: 'Cousine';
+    line-height: 1.5;
 }
 
 .menu-item {
