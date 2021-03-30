@@ -1,7 +1,7 @@
 :root {
   --fg: #000000;
   --bg: #fdfbfa;
-  --main: #3fb890;
+  --main: #3fb8a4;
   --gray: #6b6b6b;
   --font-main: "Roboto";
   --font-mono: "JetBrains Mono";
@@ -91,6 +91,7 @@ header a:active, header a:hover {
 
 .menu-item {
   display: block;
+  font-weight: 400;
   padding: 1.2em 1em;
 }
 
@@ -163,8 +164,13 @@ p {
   font-size: 1.2em;
 }
 
-a {
+a, a:hover, a:active, a:visited {
+  text-decoration: none;
+  color: var(--main);
+}
 
+a:hover {
+  text-decoration: underline;
 }
 
 .article-info-container {
