@@ -1,20 +1,22 @@
 {{ define "main" }}
 <main>
+  <h1>{{ .Title }}</h1>
   <div>
-    <h1>{{ .Title }}</h1>
-    {{ range $name, $_ := .Site.Taxonomies.tags }}
-      <a href="#{{ $name }}">#{{ $name }}</a>
-    {{ end }}
-    {{ range $name, $pages := .Site.Taxonomies.tags }}
-        <div id="{{ $name }}">
-          {{ $name }}
-          <ul>
-            {{ range $pages }}
-              <li>{{ .Title }}</div>
-            {{ end }}  
-          </ul>
-        </div>
-    {{ end }}
+  {{ range $name, $pages := .Site.Taxonomies.tags }}
+    <a href="#{{ $name }}">#{{ $name }}</a>
+  {{ end }}
+  </div>
+  <div>
+  {{ range $name, $pages := .Site.Taxonomies.tags }}
+      <div id="{{ $name }}">
+        <span>{{ $name }}</span>
+        <ul>
+          {{ range $pages }}
+            <li>{{ .Title }}</li>
+          {{ end }}  
+        </ul>
+      </div>
+  {{ end }}
   </div>
 </main>
 {{ end }}

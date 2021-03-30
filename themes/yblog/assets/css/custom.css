@@ -19,8 +19,7 @@ body {
   color: var(--fg);
   background-color: var(--bg);
   font-family: var(--font-main);
-  line-height: 1.2;
-  width: 100%;
+  line-height: 1.5;
   font-size: 16px;
 }
 
@@ -30,12 +29,12 @@ li {
 
 code {
   font-family: var(--font-mono);
-  line-height: 1.5;
   font-size: 0.9em;
 }
 
 .chroma {
   padding: 0.5em;
+  overflow-x: auto;
 }
 
 blockquote {
@@ -45,11 +44,15 @@ blockquote {
 }
 
 header {
+  background-color: var(--bg);
   font-family: var(--font-title);
   font-weight: bolder;
-  border-bottom: 2px solid #eee;
-  /* position: sticky;
-  top: 0; */
+  border-bottom: 1px solid #ddd;
+}
+
+header.sticky {
+  position: sticky;
+  top: 0;
 }
 
 header a, header a:visited {
@@ -64,7 +67,7 @@ header a:active, header a:hover {
 }
 
 .menu-container {
-  margin: 1.5em auto 0.5em;
+  margin: 1.2em auto 0;
   width: 80%;
   display: flex;
   justify-content: space-between;
@@ -83,7 +86,7 @@ header a:active, header a:hover {
 
 .menu-item {
   display: block;
-  padding: 1em;
+  padding: 1.2em 1em;
 }
 
 .menu-item.current {
@@ -94,14 +97,70 @@ header a:active, header a:hover {
   content: "/";
 }
 
+footer {
+  color: var(--gray);
+  font-family: var(--font-title);
+  border-top: 1px solid #ddd;
+  margin: auto;
+  padding: 2em;
+  text-align: center;
+}
+
+footer a, footer a:hover, footer a:active, footer a:visited {
+  color: var(--main);
+  text-decoration: none;
+  outline: none;
+}
+
 #content {
   margin: auto;
-  width: 80%
+  width: 90%;
+  max-width: 50em;
 }
 
 .article-title {
-  font-weight: 700;
-  font-size: 2rem;
+  margin-top: 2em;
+  font-weight: 500;
+  font-family: var(--font-title);
+  font-size: 3em;
+}
+
+h1 {
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.6em;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+h5 {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+h6 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+a {
+
 }
 
 .article-info-container {

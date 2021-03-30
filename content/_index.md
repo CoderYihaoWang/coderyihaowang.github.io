@@ -4,7 +4,7 @@ date: 2021-03-27T14:49:39+13:00
 draft: false
 ---
 
-# this is the index page
+# Welcome to my blog!
 
 > Go fast by going well.
 

@@ -4,7 +4,7 @@
     
     <link rel="canonical" href="{{ .Permalink }}">
     {{ hugo.Generator }}
-    <title>{{ .Title }} | {{ site.Title }}</title>
+    <title>{{ site.Title }} | {{ .Title }}</title>
 
     {{ $normalize := resources.Get "/css/normalize.css" | minify }}
     <link rel="stylesheet" href="{{ $normalize.RelPermalink }}">

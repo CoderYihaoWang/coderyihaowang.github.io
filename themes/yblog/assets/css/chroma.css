@@ -31,7 +31,7 @@
 /* NameNamespace */ .chroma .nn {  }
 /* NameOther */ .chroma .nx {  }
 /* NameProperty */ .chroma .py {  }
-/* NameTag */ .chroma .nt {  }
+/* NameTag */ .chroma .nt { color: #f19823 }
 /* NameVariable */ .chroma .nv {  }
 /* NameVariableClass */ .chroma .vc {  }
 /* NameVariableGlobal */ .chroma .vg {  }
