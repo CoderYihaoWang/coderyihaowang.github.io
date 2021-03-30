@@ -1,11 +1,16 @@
 <footer>
-  {{ range site.Params.footer }}
+  <div>
+    {{ range site.Params.footer }}
+    <span> {{ . | plainify | markdownify }} </span>
+    {{ end }}
+  </div>
+  <div>
+    <span> Last updated {{ .Lastmod.Format "Jan 2, 2006" }} </span>
+    {{ if .GitInfo }}
     <span>
-    {{ . | plainify | markdownify }} &bull;
+      &bull; Commit <a href="#">{{ .GitInfo.AbbreviatedHash }}</a>: 
+      {{ .GitInfo.Subject }}
     </span>
-  {{ end }}
-
-  <span>
-    Last updated {{ now.Format "2006-01-02" }}
-  </span>
+    {{ end }}
+  </div>
 </footer>

@@ -5,6 +5,8 @@ theme = "yblog"
 
 pygmentsUseClasses = true
 
+enableGitInfo = true
+
 [Permalinks]
     blog = "/:filename/"
 
@@ -31,6 +33,6 @@ pygmentsUseClasses = true
     
 [params]
   footer = [
-    "Made with [Hugo](https://gohugo.io/)",
+    "Made with [Hugo](https://gohugo.io/) &bull;",
     "Content in [GitHub](#)"
   ]
