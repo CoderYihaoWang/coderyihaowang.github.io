@@ -121,7 +121,6 @@ footer a, footer a:visited {
 footer a:hover, footer a:active {
   text-decoration: underline;
   text-decoration-style: dashed;
-  text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
 }
 
@@ -223,6 +222,9 @@ a.tag.article-tag {
 }
 
 .article-footer-container {
+  font-family: var(--font-title);
+  font-size: 0.9em;
+  color: var(--gray);
   margin: 5em 0;
   display: flex;
   justify-content: space-between;

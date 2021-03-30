@@ -16,12 +16,12 @@
   </div>
   <div class="article-footer-container">
     {{ if .PrevInSection }}
-      <a href="{{ .PrevInSection.Permalink }}">Prev: {{ .PrevInSection.Title }}</a> 
+      <span>Prev:<a href="{{ .PrevInSection.Permalink }}"> {{ .PrevInSection.Title }}</a></span>
     {{ else }}
       <span></span>
     {{ end }}
     {{ if .NextInSection }}
-      <a href="{{ .NextInSection.Permalink }}">Next: {{ .NextInSection.Title }}</a> 
+      <span>Next: <a href="{{ .NextInSection.Permalink }}"> {{ .NextInSection.Title }}</a></span>
     {{ else }}
       <span></span>
     {{ end }}
