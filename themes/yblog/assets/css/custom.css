@@ -1,6 +1,6 @@
 :root {
   --fg: #000000;
-  --bg: #ffffff;
+  --bg: #fdfbfa;
   --main: #3fb890;
   --gray: #6b6b6b;
   --font-main: "Roboto";
@@ -48,9 +48,14 @@ header {
   font-family: var(--font-title);
   font-weight: bolder;
   border-bottom: 1px solid #ddd;
+  z-index: 999;
 }
 
-header.sticky {
+.sticky:root {
+  scroll-padding-top: 4em;
+}
+
+.sticky:root header {
   position: sticky;
   top: 0;
 }
@@ -113,13 +118,12 @@ footer a, footer a:hover, footer a:active, footer a:visited {
 }
 
 #content {
-  margin: auto;
+  margin: 5em auto;
   width: 90%;
   max-width: 50em;
 }
 
 .article-title {
-  margin-top: 2em;
   font-weight: 500;
   font-family: var(--font-title);
   font-size: 3em;
@@ -164,11 +168,12 @@ a {
 }
 
 .article-info-container {
-
+  font-family: var(--font-quote);
+  color: var(--gray);
 }
 
 .article-info {
-
+  margin: 0.5em;
 }
 
 .article-tags-container {
@@ -176,7 +181,7 @@ a {
 }
 
 .article-tag {
-  
+  padding: 0 0.5em;
 }
 
 .article-tag::before {
