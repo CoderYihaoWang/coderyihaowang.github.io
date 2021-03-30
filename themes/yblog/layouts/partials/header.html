@@ -1,17 +1,19 @@
 <header>
-  <a href="/" title="Home">{{ site.Title }}</a>
-  <button id="dark-mode-button">dark</button>
-  <nav>
-    {{ $current := . }}
-        {{ range site.Menus.main }}
-          {{ $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
-          {{ $active = or $active (eq .Name $current.Title) }}
-          {{ $active = or $active (and (eq .Name "Blog") (eq $current.Section "blog")) }}
-          <li>
-            <a class="{{ if $active}} menu-item-current {{ else }} menu-item  {{ end }}" href="{{ .URL }}">
-              <span>{{ .Name }}</span>
-            </a>
-          </li>
-        {{ end }}
-  </nav>
+  <div class="menu-container">
+    <a href="/" title="Home" class="home">{{ site.Title }}</a>
+    <button id="dark-mode-button">dark</button>
+    <nav class="menu-items-container">
+      {{ $current := . }}
+          {{ range site.Menus.main }}
+            {{ $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
+            {{ $active = or $active (eq .Name $current.Title) }}
+            {{ $active = or $active (and (eq .Name "Blog") (eq $current.Section "blog")) }}
+            <li>
+              <a class="menu-item {{ if $active}} current {{ end }}" href="{{ .URL }}">
+                <span>{{ .Name }}</span>
+              </a>
+            </li>
+          {{ end }}
+    </nav>  
+  </div>
 </header>

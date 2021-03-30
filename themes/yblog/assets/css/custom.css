@@ -1,6 +1,12 @@
 :root {
   --fg: #000000;
   --bg: #ffffff;
+  --main: #3fb890;
+  --gray: #6b6b6b;
+  --font-main: "Roboto";
+  --font-mono: "JetBrains Mono";
+  --font-title: "Ubuntu";
+  --font-quote: "Lora";
 }
 
 .dark:root {
@@ -9,27 +15,88 @@
 }
 
 body {
+  box-sizing: border-box;
   color: var(--fg);
   background-color: var(--bg);
-  font-family: "Roboto";
+  font-family: var(--font-main);
+  line-height: 1.2;
+  width: 100%;
+  font-size: 16px;
+}
+
+li {
+  list-style-type: none;
 }
 
 code {
-  font-family: "Cousine";
+  font-family: var(--font-mono);
   line-height: 1.5;
+  font-size: 0.9em;
+}
+
+.chroma {
+  padding: 0.5em;
+}
+
+blockquote {
+  font-family: var(--font-quote);
+  font-style: italic;
+  color: var(--gray);
+}
+
+header {
+  font-family: var(--font-title);
+  font-weight: bolder;
+  border-bottom: 2px solid #eee;
+  /* position: sticky;
+  top: 0; */
+}
+
+header a, header a:visited {
+  color: var(--gray);
+  text-decoration: none;
+}
+
+header a:active, header a:hover {
+  color: var(--main);
+  text-decoration: none;
+  outline: none;
+}
+
+.menu-container {
+  margin: 1.5em auto 0.5em;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home {
+  font-size: 1.5em;
+}
+
+.menu-items-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .menu-item {
-  color: cyan;
+  display: block;
+  padding: 1em;
 }
 
-.menu-item-current {
-  color: orange;
+.menu-item.current {
+  color: var(--main);
+}
+
+.menu-item::after {
+  content: "/";
 }
 
 #content {
   margin: auto;
-  max-width: 1000px;
+  width: 80%
 }
 
 .article-title {

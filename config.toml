@@ -1,6 +1,6 @@
 baseURL = "http://example.com"
 languageCode = "en-us"
-title = "Yihao's Blog"
+title = "Yihao"
 theme = "yblog"
 
 pygmentsUseClasses = true

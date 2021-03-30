@@ -1,5 +1,5 @@
-/* Background */ .chroma { background-color: #f8f8f8 }
-/* Background */ .dark:root .chroma { color: #f8f8f8; background-color: #222 }
+/* Background */ .chroma { background-color: #f5f5f5 }
+/* Background */ .dark:root .chroma { color: #f5f5f5; background-color: #222 }
 
 /* Other */ .chroma .x {  }
 /* Error */ .chroma .err {  }
