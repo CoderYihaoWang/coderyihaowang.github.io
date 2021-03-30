@@ -1,10 +1,5 @@
 {{ define "main" }}
 <p>Count: {{ len .Pages }}</p>
-
-{{ range $name, $taxo := .Site.Taxonomies.tags }}
-  {{ $name }}
-{{ end }}
-
 <ul>
   {{ range .Pages.ByPublishDate.Reverse }}
   <li>
@@ -12,7 +7,7 @@
     <span>{{ .PublishDate.Format $dateFormat }}</span>
     <a href="{{ .RelPermalink }}">{{ .Title }}</a>
     {{ range .Params.tags }}
-      <span>#{{- . }}</span>
+    <a href="{{- $.Site.BaseURL -}}#{{- . -}}" class="tag">{{ . }}</a>
     {{ end }}
   </li>
   {{ end }}

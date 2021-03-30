@@ -3,7 +3,7 @@
   <h1>{{ .Title }}</h1>
   <div>
   {{ range $name, $pages := .Site.Taxonomies.tags }}
-    <a href="#{{ $name }}">#{{ $name }}</a>
+    <a href="#{{ $name }}" class="tag">{{ $name }}</a>
   {{ end }}
   </div>
   <div>

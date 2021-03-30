@@ -112,10 +112,17 @@ footer {
   text-align: center;
 }
 
-footer a, footer a:hover, footer a:active, footer a:visited {
+footer a, footer a:visited {
   color: var(--main);
   text-decoration: none;
   outline: none;
+}
+
+footer a:hover, footer a:active {
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
 }
 
 #content {
@@ -168,13 +175,15 @@ p {
   font-size: 1.2em;
 }
 
-a, a:hover, a:active, a:visited {
+a, a:hover, a:visited {
   text-decoration: none;
   color: var(--main);
 }
 
-a:hover {
+a:hover, a:active {
   text-decoration: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 0.2em;
 }
 
 .article-info-container {
@@ -183,17 +192,38 @@ a:hover {
 }
 
 .article-info {
-  margin: 0.5em;
+  font-size: 0.9em;
 }
 
 .article-tags-container {
-
+  margin: 0.5em 0 2em;
 }
 
-.article-tag {
-  padding: 0 0.5em;
+a.tag {
+  font-family: var(--font-title);
+  font-size: 0.9em;
+  padding: 0.2em 0.5em;
+  margin: 0.2em 0.2em 0.5em 0;
+  background-color: #f5f5f5;
+  border-radius: 1em;
+  color: var(--gray);
 }
 
-.article-tag::before {
+a.tag:hover {
+  background-color: #f0f0f0;
+  color: var(--main);
+}
+
+a.tag::before {
   content: "# ";
+}
+
+a.tag.article-tag {
+  color: var(--main);
+}
+
+.article-footer-container {
+  margin: 5em 0;
+  display: flex;
+  justify-content: space-between;
 }

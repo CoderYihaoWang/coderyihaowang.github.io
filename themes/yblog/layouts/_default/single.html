@@ -7,7 +7,7 @@
     <span class="article-info">Last modified: {{ .Lastmod.Format "Jan 2, 2006" }}</span>
     <div class="article-tags-container">
       {{ range .Params.tags }}
-        <a class="article-tag" href="{{- $.Site.BaseURL -}}/tags/#{{- . -}}">{{ . }}</a>
+        <a class="tag article-tag" href="{{- $.Site.BaseURL -}}/tags/#{{- . -}}">{{ . }}</a>
       {{ end }}
     </div>
   </div>
@@ -16,10 +16,14 @@
   </div>
   <div class="article-footer-container">
     {{ if .PrevInSection }}
-      <a href="{{ .PrevInSection.Permalink }}">{{ .PrevInSection.Title }}</a> 
+      <a href="{{ .PrevInSection.Permalink }}">Prev: {{ .PrevInSection.Title }}</a> 
+    {{ else }}
+      <span></span>
     {{ end }}
     {{ if .NextInSection }}
-      <a href="{{ .NextInSection.Permalink }}">{{ .NextInSection.Title }}</a> 
+      <a href="{{ .NextInSection.Permalink }}">Next: {{ .NextInSection.Title }}</a> 
+    {{ else }}
+      <span></span>
     {{ end }}
   </div>
 {{ end }}
