@@ -25,6 +25,13 @@ addEventListener('load', () => {
     } else {
         setCommandOpen(commandOpen)
     }
+
+    const sticky = localStorage.getItem('sticky')
+    if (sticky == null) {
+        localStorage.setItem('sticky', 'true')
+    } else {
+        setSticky(sticky)
+    }
 })
 
 function setCommandOpen(open) {
@@ -65,6 +72,17 @@ function toggleDark() {
         setDark('false')
     } else {
         setDark('true')
+    }
+}
+
+function setSticky(sticky) {
+    const root = document.getElementById('root')
+    if (sticky === 'true') {
+        root.classList.add('sticky')
+        localStorage.setItem('sticky', 'true')
+    } else {
+        root.classList.remove('sticky')
+        localStorage.setItem('sticky', 'false')
     }
 }
 
@@ -117,11 +135,11 @@ function handleCd(cmd) {
 }
 
 function handlePin() {
-
+    setSticky('true')
 }
 
 function handleUnpin() {
-
+    setSticky('false')
 }
 
 function handleExit() {
