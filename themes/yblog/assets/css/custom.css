@@ -79,8 +79,36 @@ header a:active, header a:hover {
   align-items: center;
 }
 
-.home {
+.command-container {
+  color: var(--gray);
   font-size: 1.5em;
+  cursor: pointer;
+}
+
+.command-container:hover {
+  color: var(--main);
+}
+
+.command-container .command {
+  color: transparent;
+}
+
+.command-container:hover .command {
+  color: var(--main);
+}
+
+.command-container.active, .command-container.active .command {
+  color: var(--main);
+}
+
+.command-input {
+  display: none;
+}
+
+.command-container.active .command-input {
+  display: unset;
+  color: var(--gray);
+  font-family: var(--font-mono);
 }
 
 .menu-items-container {

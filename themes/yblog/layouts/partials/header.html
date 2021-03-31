@@ -1,7 +1,12 @@
 <header>
   <div class="menu-container">
-    <a href="/" title="Home" class="home">{{ site.Title }}</a>
-    <!-- <button id="dark-mode-button">dark</button> -->
+    <span class="command-container">
+      <span title="Open Command Pallete" id="title">{{ site.Title }} 
+      <span class="command">$</span>
+      </span>
+     <input id="command" class="command-input"></input>
+    </span>
+    
     <nav class="menu-items-container">
       {{ $current := . }}
           {{ range site.Menus.main }}
