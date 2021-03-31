@@ -3,6 +3,10 @@ addEventListener('keydown', (event) => {
         setSticky('true')
         setCommandOpen('true')
     }
+
+    if (event.key.toLowerCase() === 'escape' || event.key.toLowerCase() === 'esc') {
+        setCommandOpen('false')
+    }
 })
 
 addEventListener('load', () => {
@@ -150,8 +154,6 @@ function handleUnpin() {
 }
 
 function handleExit(cmd) {
+    setSticky('false')
     setCommandOpen('false')
-    if (cmd.length === 1 && (cmd[0] === '--unpin' ||cmd[0] === '-u')) {
-        setSticky('false')
-    } 
 }
