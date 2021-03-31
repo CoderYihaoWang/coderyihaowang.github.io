@@ -17,4 +17,11 @@
 
     {{ $custom := resources.Get "/css/custom.css" | minify}}
     <link rel="stylesheet" href="{{ $custom.RelPermalink }}">
+
+    <style>
+        body {
+          visibility: hidden;
+          opacity: 0;
+        }
+      </style>
 </head>

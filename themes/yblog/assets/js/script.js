@@ -10,6 +10,16 @@ addEventListener('keydown', (event) => {
 })
 
 addEventListener('load', () => {
+    const dark = localStorage.getItem('dark')
+    if (dark == null) {
+        localStorage.setItem('dark', 'false') 
+    } else {
+        setDark(dark)
+    }
+
+    document.body.style.visibility = 'visible';
+    document.body.style.opacity = 1;
+
     document.getElementById('title').addEventListener('click', () => {
         toggleCommand()
     })
@@ -19,16 +29,6 @@ addEventListener('load', () => {
         handleCommand(command.value)
         command.value = ""
     })
-
-    const dark = localStorage.getItem('dark')
-    if (dark == null) {
-        localStorage.setItem('dark', 'false') 
-    } else {
-        setDark(dark)
-    }
-
-    const autoDark = localStorage.getItem('auto-dark')
-
 
     const commandOpen = localStorage.getItem('command-open')
     if (commandOpen == null) {
