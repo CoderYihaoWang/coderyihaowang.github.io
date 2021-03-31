@@ -153,8 +153,34 @@ footer a:hover, footer a:active {
 }
 
 #content {
-  margin: 5em auto;
+  margin: 4em auto 0;
   width: 90%;
+}
+
+.list-container, .taxonomy-container {
+  max-width: 40em;
+  margin: auto;
+}
+
+.article-container {
+  display: grid;
+  grid-template-columns: 3fr 7fr 0fr;
+  gap: 2em;
+}
+
+.article-table-of-contents {
+  position: sticky;
+  top: 4em;
+  padding: 4em 0;
+  margin: 4em 0;
+  max-width: 15em;
+}
+
+#TableOfContents ol, #TableOfContents ul {
+  padding: 0 2em;
+}
+
+.article-main {
   max-width: 40em;
 }
 
