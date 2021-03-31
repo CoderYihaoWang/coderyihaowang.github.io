@@ -78,15 +78,24 @@ function handleCommand(command) {
     }
     switch(cmd[0]) {
         case 'dark':
-            handleCommandDark(cmd.slice(1))
+            handleDark(cmd.slice(1))
             break
         case 'cd':
-            handleCommandCd(cmd.slice(1))
+            handleCd(cmd.slice(1))
+            break
+        case 'pin':
+            handlePin()
+            break
+        case 'unpin':
+            handleUnpin()
+            break
+        case 'exit':
+            handleExit()
             break
     }
 }
 
-function handleCommandDark(cmd) {
+function handleDark(cmd) {
     if (cmd.length === 0) {
         toggleDark()
     } else if (cmd[0] === 'on') {
@@ -96,7 +105,7 @@ function handleCommandDark(cmd) {
     }
 }
 
-function handleCommandCd(cmd) {
+function handleCd(cmd) {
     if (cmd.length !== 1) {
         return
     }
@@ -105,4 +114,16 @@ function handleCommandCd(cmd) {
         return
     }
     window.location.href = window.location.origin + '/' + cmd[0]
+}
+
+function handlePin() {
+
+}
+
+function handleUnpin() {
+
+}
+
+function handleExit() {
+    setCommandOpen('false')
 }
