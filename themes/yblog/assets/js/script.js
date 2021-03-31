@@ -1,3 +1,10 @@
+addEventListener('keydown', (event) => {
+    if (event.ctrlKey && event.key === '`') {
+        setSticky('true')
+        setCommandOpen('true')
+    }
+})
+
 addEventListener('load', () => {
     document.getElementById('title').addEventListener('click', () => {
         toggleCommand()
@@ -108,7 +115,7 @@ function handleCommand(command) {
             handleUnpin()
             break
         case 'exit':
-            handleExit()
+            handleExit(cmd.slice(1))
             break
     }
 }
@@ -142,6 +149,9 @@ function handleUnpin() {
     setSticky('false')
 }
 
-function handleExit() {
+function handleExit(cmd) {
     setCommandOpen('false')
+    if (cmd.length === 1 && (cmd[0] === '--unpin' ||cmd[0] === '-u')) {
+        setSticky('false')
+    } 
 }
