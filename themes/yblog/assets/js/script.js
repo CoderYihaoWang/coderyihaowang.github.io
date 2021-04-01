@@ -43,6 +43,13 @@ addEventListener('load', () => {
     } else {
         setSticky(sticky)
     }
+
+    const toc = localStorage.getItem('toc')
+    if (toc == null) {
+        localStorage.setItem('toc', 'true')
+    } else {
+        setToc(toc)
+    }
 })
 
 function setCommandOpen(open) {
@@ -86,6 +93,26 @@ function toggleDark() {
     }
 }
 
+function setToc(tocOpen) {
+    const toc = document.getElementById('TableOfContents')
+    if (tocOpen === 'true') {
+        toc.classList.remove('hidden')
+        localStorage.setItem('toc', 'true')
+    } else {
+        toc.classList.add('hidden')
+        localStorage.setItem('toc', 'false')
+    }
+}
+
+function toggleToc() {
+    const toc = localStorage.getItem('toc')
+    if (toc === 'true') {
+        setToc('false')
+    } else {
+        setToc('true')
+    }
+}
+
 function setSticky(sticky) {
     const root = document.getElementById('root')
     if (sticky === 'true') {
@@ -106,6 +133,9 @@ function handleCommand(command) {
         return
     }
     switch(cmd[0]) {
+        case 'toc':
+            handleToc(cmd.slice(1))
+            break
         case 'dark':
             handleDark(cmd.slice(1))
             break
@@ -119,8 +149,18 @@ function handleCommand(command) {
             handleUnpin()
             break
         case 'exit':
-            handleExit(cmd.slice(1))
+            handleExit()
             break
+    }
+}
+
+function handleToc(cmd) {
+    if (cmd.length === 0) {
+        toggleToc()
+    } else if (cmd[0] === 'on') {
+        setToc('true')
+    } else if (cmd[0] === 'off') {
+        setToc('false')
     }
 }
 
@@ -153,7 +193,7 @@ function handleUnpin() {
     setSticky('false')
 }
 
-function handleExit(cmd) {
+function handleExit() {
     setSticky('false')
     setCommandOpen('false')
 }

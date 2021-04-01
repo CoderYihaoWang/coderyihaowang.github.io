@@ -182,6 +182,10 @@ footer a:hover, footer a:active {
   padding: 0 2em;
 }
 
+#TableOfContents.hidden {
+  display: none;
+}
+
 .article-main {
   max-width: 40em;
   margin: auto;
