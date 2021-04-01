@@ -101,14 +101,19 @@ header a:active, header a:hover {
   color: var(--main);
 }
 
+.command, .command-input {
+    font-size: 0.8em;
+    font-family: var(--font-mono);
+}
+
 .command-input {
+  width: 20em;
   display: none;
 }
 
 .command-container.active .command-input {
   display: unset;
   color: var(--gray);
-  font-family: var(--font-mono);
 }
 
 .menu-items-container {
@@ -121,6 +126,7 @@ header a:active, header a:hover {
   display: block;
   font-weight: 400;
   padding: 1.2em 1em;
+  white-space: nowrap;
 }
 
 .menu-item.current {
@@ -182,7 +188,7 @@ footer a:hover, footer a:active {
   padding: 0 2em;
 }
 
-#TableOfContents.hidden {
+.article-table-of-contents.hidden {
   display: none;
 }
 
@@ -191,7 +197,7 @@ footer a:hover, footer a:active {
   margin: auto;
 }
 
-.article-title {
+.article-title, .list-title {
   font-weight: 500;
   font-family: var(--font-title);
   font-size: 3em;
@@ -267,6 +273,7 @@ a.tag {
   background-color: #f5f5f5;
   border-radius: 1em;
   color: var(--gray);
+  white-space: nowrap;
 }
 
 a.tag:hover {
@@ -289,4 +296,39 @@ a.tag.article-tag {
   margin: 5em 0;
   display: flex;
   justify-content: space-between;
+}
+
+.list-list {
+  padding: 0;
+}
+
+.list-count {
+  color: var(--gray);
+  font-family: var(--font-title);
+}
+
+.list-time {
+  color: var(--gray);
+  font-size: 0.9em;
+  font-family: var(--font-title);
+}
+
+.list-item {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  margin: 2em;
+}
+
+.tag-title {
+  margin-top: 3em;
+  font-family: var(--font-title);
+}
+
+.tag-title::before {
+  content: "# "
+}
+
+.tag-count {
+  font-size: 0.8em;
+  font-weight: 100;
 }

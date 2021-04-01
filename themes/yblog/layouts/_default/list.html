@@ -1,15 +1,23 @@
 {{ define "main" }}
 <div class="list-container">
-<p>Count: {{ len .Pages }}</p>
-<ul>
+<h1 class="list-title">{{ .Title }}</h1>
+<p class="list-count">{{ len .Pages }} posts</p>
+<ul class="list-list">
   {{ range .Pages.ByPublishDate.Reverse }}
-  <li>
-    {{ $dateFormat := (print "2006-01-02" | string) }}
-    <span>{{ .PublishDate.Format $dateFormat }}</span>
-    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-    {{ range .Params.tags }}
-    <a href="{{- $.Site.BaseURL -}}#{{- . -}}" class="tag">{{ . }}</a>
-    {{ end }}
+  <li class="list-item">
+    <div class="list-time">
+      <span>{{ .PublishDate.Format "Jan 2, 2006" }}</span>
+    </div>
+    <div>
+      <div>
+       <a href="{{ .RelPermalink }}">{{ .Title }}</a> 
+      </div>
+      <div>
+        {{ range .Params.tags }}
+        <a href="{{- $.Site.BaseURL -}}/tags#{{- . -}}" class="tag">{{ . }}</a>
+        {{ end }}
+      </div>
+    </div>
   </li>
   {{ end }}
 </ul>

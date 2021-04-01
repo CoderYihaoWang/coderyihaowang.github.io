@@ -1,20 +1,32 @@
 {{ define "main" }}
 <main class="taxonomy-container">
-  <h1>{{ .Title }}</h1>
+  <h1 class="list-title">{{ .Title }}</h1>
+  <p class="list-count">{{ len .Site.Taxonomies.tags }} tags</p>
   <div>
   {{ range $name, $pages := .Site.Taxonomies.tags }}
-    <a href="#{{ $name }}" class="tag">{{ $name }}</a>
+    <a href="#{{ $name }}" class="tag">{{ $name }} <span class="tag-count">{{ len $pages }}</span></a>
   {{ end }}
   </div>
   <div>
   {{ range $name, $pages := .Site.Taxonomies.tags }}
-      <div id="{{ $name }}">
-        <span>{{ $name }}</span>
-        <ul>
-          {{ range $pages }}
-            <li>{{ .Title }}</li>
-          {{ end }}  
-        </ul>
+    <div id="{{ $name }}" class="tag-title">{{ $name }}</span>
+    <div>
+      {{ range $pages }}
+        <div class="list-item">
+          <div class="list-time">{{ .PublishDate.Format "Jan 2, 2006" }}</div>
+          <div>
+            <div>
+              <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </div>
+          <div>
+            {{ range .Params.tags }}
+            <a href="{{- $.Site.BaseURL -}}/tags#{{- . -}}" class="tag">{{ . }}</a>
+            {{ end }}
+          </div>
+          </div>
+          
+        </div>
+      {{ end }}  
       </div>
   {{ end }}
   </div>

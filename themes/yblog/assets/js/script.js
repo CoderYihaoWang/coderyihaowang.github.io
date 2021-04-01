@@ -52,8 +52,13 @@ addEventListener('load', () => {
     }
 })
 
+function print(message) {
+    document.getElementById('command').placeholder = message
+}
+
 function setCommandOpen(open) {
     const command = document.getElementsByClassName('command-container')[0]
+    print('Enter command here (try `help`)')
     if (open === 'true') {
         command.classList.add('active')
         localStorage.setItem('command-open', 'true')
@@ -94,7 +99,10 @@ function toggleDark() {
 }
 
 function setToc(tocOpen) {
-    const toc = document.getElementById('TableOfContents')
+    const toc = document.getElementsByClassName('article-table-of-contents')[0]
+    if (!toc) {
+        return
+    }
     if (tocOpen === 'true') {
         toc.classList.remove('hidden')
         localStorage.setItem('toc', 'true')
