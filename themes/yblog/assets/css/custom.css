@@ -164,15 +164,17 @@ footer a:hover, footer a:active {
 
 .article-container {
   display: grid;
-  grid-template-columns: 3fr 7fr 0fr;
+  width: 100%;
+  grid-template-columns: 1fr 5fr 1fr;
   gap: 2em;
 }
 
 .article-table-of-contents {
   position: sticky;
+  font-size: 0.8em;
   top: 4em;
   padding: 4em 0;
-  margin: 4em 0;
+  margin: 6em 0;
   max-width: 15em;
 }
 
@@ -182,6 +184,7 @@ footer a:hover, footer a:active {
 
 .article-main {
   max-width: 40em;
+  margin: auto;
 }
 
 .article-title {
