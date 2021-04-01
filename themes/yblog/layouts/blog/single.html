@@ -1,6 +1,10 @@
 {{ define "main" }}
 <div class="article-container">
-<div></div>
+<div class="article-table-of-contents-container">
+  <div class="article-table-of-contents">
+    {{ .TableOfContents }}
+  </div>
+</div>
 <div class="article-main">
   <h1 class="article-title">{{ .Title }}</h1>
   <div class="article-info-container">
@@ -30,10 +34,6 @@
     {{ end }}
   </div>
 </div>
-<div class="article-table-of-contents-container">
-  <div class="article-table-of-contents">
-    {{ .TableOfContents }}
-  </div>
-</div>
+<div></div>
 </div>
 {{ end }}

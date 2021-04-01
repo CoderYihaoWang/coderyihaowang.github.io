@@ -33,7 +33,8 @@ code {
 }
 
 .chroma {
-  padding: 1em;
+  padding: 1em;  
+  width: 62vw;
   overflow-x: auto;
 }
 
@@ -108,12 +109,23 @@ header a:active, header a:hover {
 
 .command-input {
   width: 20em;
+  border: none;
+  color: var(--main);
+  background-color: var(--bg);
   display: none;
+}
+
+.command-input::placeholder {
+  font-style: italic;
+  color: var(--gray); 
+}
+
+.command-input:focus {
+  outline: none;
 }
 
 .command-container.active .command-input {
   display: unset;
-  color: var(--gray);
 }
 
 .menu-items-container {
