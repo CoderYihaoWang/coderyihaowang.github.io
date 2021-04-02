@@ -159,6 +159,9 @@ function handleCommand(command) {
         case 'json':
             handleJson()
             break
+        case 'ls':
+            handleLs(cmd.slice(1))
+            break
         case 'exit':
             handleExit()
             break
@@ -211,4 +214,13 @@ function handleExit() {
 
 function handleJson() {
     window.location.href = window.location.origin + '/index.json'
+}
+
+function handleLs(cmd) {
+    if (cmd.length === 0) {
+        window.location.href = window.location.origin + '/tags'
+    } else {
+        window.location.href = window.location.origin + '/tags#' + cmd[0] 
+    }
+
 }
