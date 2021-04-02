@@ -7,6 +7,12 @@ pygmentsUseClasses = true
 
 enableGitInfo = true
 
+[outputs]
+home = [
+  "HTML",
+  "JSON"
+]
+
 [Permalinks]
     blog = "/:filename/"
 

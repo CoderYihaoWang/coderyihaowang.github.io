@@ -1,0 +1,44 @@
+{{- $hugo := dict
+    "Version" hugo.Version
+    "BuildDate" hugo.BuildDate
+    "CommitHash" hugo.CommitHash
+    "Environment" hugo.Environment -}}
+  
+  {{- $site := dict
+    "BaseURL" site.BaseURL
+    "LastChange" site.LastChange
+    "Title" site.Title
+    "Language" site.Language -}}
+  
+  {{- $blog := slice -}}
+  
+  {{- range site.RegularPages.ByPublishDate.Reverse -}}
+    {{- $page := dict
+      "FuzzyWordCount" .FuzzyWordCount
+      "WordCount" .WordCount
+      "ReadingTime" .ReadingTime
+      "Len" .Len
+      "Permalink" .Permalink
+      "RelPermalink" .RelPermalink
+      "Name" .Name
+      "Title" .Title
+      "Lastmod" .Lastmod
+      "PublishDate" .PublishDate
+      "Aliases" .Aliases
+      "Kind" .Kind
+      "Section" .Section
+      "Type" .Type
+      "Weight" .Weight
+      "GitInfo" .GitInfo
+      "Content" .Plain
+      "Parameters" .Params -}}
+  
+    {{- $blog = $blog | append $page -}}
+  {{- end -}}
+  
+  {{- $object := dict
+    "hugo" $hugo
+    "site" $site
+    "blog" $blog -}}
+  
+  {{- $object | jsonify -}}

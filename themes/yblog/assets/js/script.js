@@ -156,6 +156,9 @@ function handleCommand(command) {
         case 'unpin':
             handleUnpin()
             break
+        case 'json':
+            handleJson()
+            break
         case 'exit':
             handleExit()
             break
@@ -204,4 +207,8 @@ function handleUnpin() {
 function handleExit() {
     setSticky('false')
     setCommandOpen('false')
+}
+
+function handleJson() {
+    window.location.href = window.location.origin + '/index.json'
 }
