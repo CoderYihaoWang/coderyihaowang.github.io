@@ -3,7 +3,7 @@ title: "Script"
 date: 2021-04-02T00:24:45+13:00
 category: "note"
 tags: []
-curated: false
+featured: false
 draft: false
 ---
 

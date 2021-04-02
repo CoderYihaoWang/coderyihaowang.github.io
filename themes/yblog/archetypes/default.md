@@ -3,7 +3,7 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 category: "note"
 tags: []
-curated: false
+featured: false
 draft: true
 ---
 

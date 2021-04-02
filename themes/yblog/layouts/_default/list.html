@@ -2,7 +2,7 @@
 <div class="list-container">
 <h1 class="list-title">{{ .Title }}</h1>
 <p class="list-count">{{ len .Pages }} posts</p>
-<ul class="list-list">
+<ul class="list-list" id="list">
   {{ range .Pages.ByPublishDate.Reverse }}
   <li class="list-item">
     <div class="list-time">

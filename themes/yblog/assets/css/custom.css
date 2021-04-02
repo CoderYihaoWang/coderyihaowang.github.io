@@ -123,6 +123,10 @@ header a:active, header a:hover {
   color: var(--gray); 
 }
 
+.command-input.error::placeholder {
+  color: #cc2f2f;
+}
+
 .command-input:focus {
   outline: none;
 }

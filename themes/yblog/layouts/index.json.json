@@ -24,6 +24,7 @@
       "Title" .Title
       "Lastmod" .Lastmod
       "PublishDate" .PublishDate
+      "FormattedDate" (.PublishDate.Format "Jan 2, 2006")
       "Aliases" .Aliases
       "Kind" .Kind
       "Section" .Section
