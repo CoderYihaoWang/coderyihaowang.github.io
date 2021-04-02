@@ -34,5 +34,6 @@ enableGitInfo = true
 [params]
   footer = [
     "Made with [Hugo](https://gohugo.io/) &bull;",
+    "Themed with [YBlog](#) &bull;",
     "Content in [GitHub](#)"
   ]

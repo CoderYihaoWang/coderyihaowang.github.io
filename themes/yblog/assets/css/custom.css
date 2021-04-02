@@ -32,10 +32,13 @@ code {
   font-size: 0.9em;
 }
 
-div.chroma {
+pre.chroma {
   padding: 1em;  
-  width: 62vw;
   overflow-x: auto;
+}
+
+.highlight {
+  width: 62vw;
 }
 
 blockquote {
