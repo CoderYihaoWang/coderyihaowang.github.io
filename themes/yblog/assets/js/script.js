@@ -198,7 +198,7 @@ function handlePin() {
 }
 
 function handleUnpin() {
-    setSticky('false')
+    handleExit()
 }
 
 function handleExit() {

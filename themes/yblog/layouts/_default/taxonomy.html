@@ -9,7 +9,7 @@
   </div>
   <div>
   {{ range $name, $pages := .Site.Taxonomies.tags }}
-    <div id="{{ $name }}" class="tag-title">{{ $name }}</span>
+    <div id="{{ $name }}" class="tag-title">{{ $name }}</div>
     <div>
       {{ range $pages }}
         <div class="list-item">

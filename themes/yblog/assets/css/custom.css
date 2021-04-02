@@ -337,10 +337,8 @@ a.tag.article-tag {
 .tag-title {
   margin-top: 3em;
   font-family: var(--font-title);
-}
-
-.tag-title::before {
-  content: "# "
+  font-size: 1.2em;
+  color: var(--gray);
 }
 
 .tag-count {
