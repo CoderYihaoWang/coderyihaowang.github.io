@@ -253,40 +253,143 @@ function handleFind(cmd) {
 
 function findCmd(cmd) {
   const commands = cmd.toLowerCase().split(" ");
-  find(cmd);
+  let title = false;
+  let content = false;
+  let date = false;
+  let featured = false;
+  let regex = false;
+
+  let shortOptions = "";
+
+  let search = "";
+
+  for (const c of commands) {
+    if (c.startsWith('--')) {
+      switch (c.substring(2)) {
+        case 'title':
+          title = true;
+          break;
+        case 'content':
+          content = true;
+          break;
+        case 'date':
+          date = true;
+          break;
+        case 'featured':
+          featured = true;
+          break;
+        case 'regex':
+          regex = true;
+          break;
+      }
+    } else if (c.startsWith('-')) {
+      shortOptions += c.substring(1);
+    } else {
+      search = c;
+    }
+  }
+
+  for (const c of shortOptions) {
+    switch (c) {
+      case 't':
+          title = true;
+          break;
+        case 'c':
+          content = true;
+          break;
+        case 'd':
+          date = true;
+          break;
+        case 'f':
+          featured = true;
+          break;
+        case 'r':
+          regex = true;
+          break;
+    }
+  }
+
+  if (!title && !content && !date) {
+    title = true;
+    content = true;
+    date = true;
+  }
+
+  find(search, title, content, date, featured, regex);
 }
 
 function find(
   search,
-  title = true,
-  content = true,
-  date = true,
-  featured = false,
-  regex = false
+  title,
+  content,
+  date,
+  featured,
+  regex
 ) {
   const oldList = document.getElementById("list");
   const newList = document.createElement("ul");
   info('Searching...')
   fetch(`${window.location.origin}/index.json`)
     .then(response => response.json())
-    .then(data => {
-      let blog = data.blog
-      // if (featured) {
-        blog = blog.filter(b => b.Parameters.featured === true)
-      // }
-
-      return blog
-    })
-    .catch((err) => {
-      err('Error in searching...')
-      console.error(err)
-    })
+    .then(data => filter(data.blog, search, title, content, date, featured, regex))
     .then(blog => {
       const count = document.getElementsByClassName('list-count')[0]
       count.textContent = `${blog.length} post${blog.length === 1 ? '' : 's'}`
       fillBlog(newList, blog)
       oldList.replaceWith(newList);
+      return blog.length;
     })
+    .then(count => info(`${count} result${count === 1 ? '' : 's'}`))
+    .catch((e) => {
+      err('Error in searching...')
+      console.error(e)
+    })
+}
+
+function filter(blog, search, title, content, date, featured, regex) {
+  if (featured) {
+    blog = blog.filter(b => b.Parameters.featured === true)
+  }
+  if (search.length === 0) {
+    return blog
+  }
+
+  const reg = new RegExp(search, 'i')
+  search = search.toLowerCase()
+
+  let filter = b => false;
+
+  if (title) {
+    if (regex) {
+      filter = appendFilter(filter, b => reg.test(b.Title))
+    } else {
+      filter = appendFilter(filter, b => b.Title.toLowerCase().includes(search))
+    }
+  }
+
+  if (content) {
+    if (regex) {
+      filter = appendFilter(filter, b => reg.test(b.Content))
+    } else {
+      filter = appendFilter(filter, b => b.Content.toLowerCase().includes(search))
+    }
+  }
+
+  if (date) {
+    if (regex) {
+      filter = appendFilter(filter, b => reg.test(b.PublishDate))
+    } else {
+      filter = appendFilter(filter, b => b.PublishDate.toLowerCase().includes(search))
+    }
+  }
+
+  return blog.filter(b => filter(b))
+}
+
+function appendFilter(f, newF) {
+  return function(b) {
+    return f(b) || newF(b)
+  }
 }
 
 function fillBlog(list, blog) {
@@ -313,12 +416,14 @@ function fillBlog(list, blog) {
     outerDiv.appendChild(linkDiv)
 
     const tagDiv = document.createElement('div')
-    for (const tag of b.Parameters.tags) {
-      const tagLink = document.createElement('a')
-      tagLink.textContent = tag
-      tagLink.href = "/tags#" + tag
-      tagLink.classList.add('tag')
-      tagDiv.appendChild(tagLink)
+    if (b.Parameters.tags) {
+      for (const tag of b.Parameters.tags) {
+        const tagLink = document.createElement('a')
+        tagLink.textContent = tag
+        tagLink.href = "/tags#" + tag
+        tagLink.classList.add('tag')
+        tagDiv.appendChild(tagLink)
+      }
     }
     outerDiv.appendChild(tagDiv)
 
