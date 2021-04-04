@@ -3,6 +3,10 @@
   --bg: #fdfbfa;
   --main: #3fb8a4;
   --gray: #6b6b6b;
+  --info: #f5f5f5;
+  --info-highlight: #f0f0f0;
+  --err: #cc2f2f;
+  --border: #ddd;
   --font-main: "Roboto";
   --font-mono: "JetBrains Mono";
   --font-title: "Ubuntu";
@@ -12,6 +16,11 @@
 .dark:root {
   --fg: #ffffff;
   --bg: #2a2b2d;
+  --gray: #ababab;
+  --info: #3d3d3d;
+  --info-highlight: #5d5d5d;
+  --err: #eb7d88;
+  --border: #777777;
 }
 
 body {
@@ -51,7 +60,7 @@ header {
   background-color: var(--bg);
   font-family: var(--font-title);
   font-weight: bolder;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border);
   z-index: 999;
 }
 
@@ -124,7 +133,7 @@ header a:active, header a:hover {
 }
 
 .command-input.error::placeholder {
-  color: #cc2f2f;
+  color: var(--err);
 }
 
 .command-input:focus {
@@ -159,7 +168,7 @@ header a:active, header a:hover {
 footer {
   color: var(--gray);
   font-family: var(--font-title);
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border);
   margin: auto;
   padding: 2em;
   text-align: center;
@@ -289,14 +298,14 @@ a.tag {
   font-size: 0.9em;
   padding: 0.2em 0.5em;
   margin: 0.2em 0.2em 0.5em 0;
-  background-color: #f5f5f5;
+  background-color: var(--info);
   border-radius: 1em;
   color: var(--gray);
   white-space: nowrap;
 }
 
 a.tag:hover {
-  background-color: #f0f0f0;
+  background-color: var(--info-highlight);
   color: var(--main);
 }
 
