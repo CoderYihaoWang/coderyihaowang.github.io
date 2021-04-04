@@ -215,7 +215,9 @@ function handleDark(cmd) {
     setDark("false");
   } else {
     err("dark: invalid args");
+    return
   }
+  info("Enter command here (try `help`)")
 }
 
 function handleCd(cmd) {
@@ -236,6 +238,7 @@ function handlePin(cmd) {
     return;
   }
   setSticky("true");
+  info("Enter command here (try `help`)")
 }
 
 function handleUnpin(cmd) {
@@ -244,6 +247,7 @@ function handleUnpin(cmd) {
     return;
   }
   handleExit();
+  info("Enter command here (try `help`)")
 }
 
 function handleExit(cmd) {
@@ -253,6 +257,7 @@ function handleExit(cmd) {
   }
   setSticky("false");
   setCommandOpen("false");
+  info("Enter command here (try `help`)")
 }
 
 function handleJson(cmd) {
@@ -261,6 +266,7 @@ function handleJson(cmd) {
     return;
   }
   window.location.href = window.location.origin + "/index.json";
+  info("Enter command here (try `help`)")
 }
 
 function handleLs(cmd) {
@@ -272,6 +278,7 @@ function handleLs(cmd) {
   } else {
     window.location.href = window.location.origin + "/tags#" + cmd[0];
   }
+  info("Enter command here (try `help`)")
 }
 
 function handleFind(cmd) {
@@ -475,5 +482,7 @@ function handleHelp(cmd) {
     window.location.href = window.location.origin + "/help#-" + cmd[0];
   } else {
     err("help: invalid args");
+    return
   }
+  info("Enter command here (try `help`)")
 }
