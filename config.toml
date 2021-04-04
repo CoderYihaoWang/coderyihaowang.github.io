@@ -7,6 +7,9 @@ pygmentsUseClasses = true
 
 enableGitInfo = true
 
+[markup.goldmark.renderer]
+unsafe= true
+
 [outputs]
 home = [
   "HTML",

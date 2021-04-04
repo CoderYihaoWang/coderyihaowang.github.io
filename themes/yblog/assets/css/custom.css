@@ -280,6 +280,34 @@ a:hover, a:active {
   text-underline-offset: 0.2em;
 }
 
+kbd {
+  font-family: var(--font-mono);
+}
+
+table {
+  border-collapse: collapse;
+  overflow-x: auto;
+}
+
+td {
+  padding: 0.2em 0.5em;
+  border: solid 1px var(--bg);
+}
+
+tr:nth-child(odd) {
+  background-color: #f5f5f5;
+}
+
+.dark:root tr:nth-child(odd) {
+  background-color: #222;
+}
+
+th {
+  background-color: var(--main);
+  border: solid 1px var(--bg);
+  padding: 0.2em 0.5em;
+}
+
 .article-info-container {
   font-family: var(--font-quote);
   color: var(--gray);
@@ -363,4 +391,15 @@ a.tag.article-tag {
   color: var(--gray);
   font-size: 5em;
   font-family: var(--font-title);
+}
+
+@media (max-width: 1000px) {
+  .article-table-of-contents {
+    display: none;
+    width: 0;
+  }
+}
+
+@media (max-width: 700px) {
+
 }
