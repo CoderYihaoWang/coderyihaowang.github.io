@@ -1,24 +1,24 @@
 <header>
   <div class="menu-container">
     <span class="command-container">
-        <span title="Command Pallete" id="title">{{ site.Title }} 
-          <span class="command"> > </span>
-        </span>
-     <input id="command" class="command-input"></input>
+      <span title="Command Pallete" id="title">{{ site.Title }} 
+        <span class="command"> > </span>
+      </span>
+      <input id="command" class="command-input"></input>
     </span>
-    
-    <nav class="menu-items-container">
+      <nav class="menu-items-container">
       {{ $current := . }}
-          {{ range site.Menus.main }}
-            {{ $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
-            {{ $active = or $active (eq .Name $current.Title) }}
-            {{ $active = or $active (and (eq .Name "Blog") (eq $current.Section "blog")) }}
-            <li>
-              <a class="menu-item {{ if $active}} current {{ end }}" href="{{ .URL }}">
-                <span>{{ .Name }}</span>
-              </a>
-            </li>
-          {{ end }}
-    </nav>  
+        {{ range site.Menus.main }}
+          {{ $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
+          {{ $active = or $active (eq .Name $current.Title) }}
+          {{ $active = or $active (and (eq .Name "Blog") (eq $current.Section "blog")) }}
+          <li>
+            <a class="menu-item {{ if $active}} current {{ end }}" href="{{ .URL }}">
+              <span>{{ .Name }}</span>
+            </a>
+          </li>
+        {{ end }}
+      </nav>   
+      <a href="javascript:void(0)" onclick="menu()" class="icon">三</a>
   </div>
 </header>

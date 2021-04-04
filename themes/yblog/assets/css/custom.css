@@ -94,6 +94,7 @@ header a:active, header a:hover {
 
 #title {
   white-space: nowrap;
+  padding: 0.5em 0;
 }
 
 .command-container {
@@ -155,9 +156,24 @@ header a:active, header a:hover {
 }
 
 .menu-items-container {
-  display: flex;
+  display: inline-flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.icon {
+  font-weight: 400;
+  padding: 1.2em 1em;
+  margin: 1.2em 0;
+  display: none;
+}
+
+.icon:hover {
+  color: var(--main);
+}
+
+.sticky:root .icon {
+  margin: 0;
 }
 
 .menu-item {
@@ -407,5 +423,28 @@ a.tag.article-tag {
   .article-table-of-contents {
     display: none;
     width: 0;
+  }
+
+  .menu-container {
+    flex-direction: column;
+  }
+
+  .menu-items-container {
+    flex-direction: column;
+  }
+
+  .menu-items-container.responsive {
+    display: flex;
+  }
+
+  .menu-items-container {
+    display: none;
+  }
+
+  .icon {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }

@@ -1,3 +1,8 @@
+function menu() {
+  const menu = document.getElementsByClassName('menu-items-container')[0]
+  menu.classList.toggle('responsive')
+}
+
 addEventListener("keydown", (event) => {
   if (event.ctrlKey && event.key === "`") {
     setSticky("true");
@@ -248,7 +253,7 @@ function handleUnpin(cmd) {
     err("unpin: invalid args");
     return;
   }
-  handleExit();
+  handleExit(cmd);
   info("Enter command here (try `help`)")
 }
 
