@@ -27,7 +27,7 @@ addEventListener("load", () => {
     toggleCommand();
   });
 
-  document.getElementById("command").addEventListener("change", (event) => {
+  document.getElementById("command").addEventListener("change", () => {
     const command = document.getElementById("command");
     handleCommand(command.value);
     command.value = "";
@@ -153,37 +153,38 @@ function handleCommand(command) {
   if (!command) {
     return;
   }
-  const cmd = command.toLowerCase().split(" ");
+  const cmd = command.toLowerCase().split(/\s+/);
   if (cmd.length < 1) {
     return;
   }
+  const rest = cmd.slice(1)
   switch (cmd[0]) {
     case "toc":
-      handleToc(cmd.slice(1));
+      handleToc(rest);
       break;
     case "dark":
-      handleDark(cmd.slice(1));
+      handleDark(rest);
       break;
     case "pin":
-      handlePin();
+      handlePin(rest);
       break;
     case "unpin":
-      handleUnpin();
+      handleUnpin(rest);
       break;
     case "json":
-      handleJson();
+      handleJson(rest);
       break;
     case "cd":
-      handleCd(cmd.slice(1));
+      handleCd(rest);
       break;
     case "ls":
-      handleLs(cmd.slice(1));
+      handleLs(rest);
       break;
     case "find":
-      handleFind(cmd.slice(1));
+      handleFind(rest);
       break;
     case "exit":
-      handleExit();
+      handleExit(rest);
       break;
     default:
       err("Unknown command (see `help`)");
@@ -197,6 +198,8 @@ function handleToc(cmd) {
     setToc("true");
   } else if (cmd[0] === "off") {
     setToc("false");
+  } else {
+    err('toc: invalid args')
   }
 }
 
@@ -207,40 +210,62 @@ function handleDark(cmd) {
     setDark("true");
   } else if (cmd[0] === "off") {
     setDark("false");
+  } else {
+    err('dark: invalid args')
   }
 }
 
 function handleCd(cmd) {
   if (cmd.length !== 1) {
+    err('cd: invalid args')
     return;
   }
-  if (cmd[0] === "~") {
+  if (cmd[0] === "~" || cmd[0] === 'home') {
     window.location.href = window.location.origin;
     return;
   }
   window.location.href = window.location.origin + "/" + cmd[0];
 }
 
-function handlePin() {
+function handlePin(cmd) {
+  if (cmd.length !== 0) {
+    err('pin: invalid args')
+    return
+  }
   setSticky("true");
 }
 
-function handleUnpin() {
+function handleUnpin(cmd) {
+  if (cmd.length !== 0) {
+    err('unpin: invalid args')
+    return
+  }
   handleExit();
 }
 
-function handleExit() {
+function handleExit(cmd) {
+  if (cmd.length !== 0) {
+    err('exit: invalid args')
+    return
+  }
   setSticky("false");
   setCommandOpen("false");
 }
 
-function handleJson() {
+function handleJson(cmd) {
+  if (cmd.length !== 0) {
+    err('json: invalid args')
+    return
+  }
   window.location.href = window.location.origin + "/index.json";
 }
 
 function handleLs(cmd) {
   if (cmd.length === 0) {
     window.location.href = window.location.origin + "/tags";
+  } else if (cmd.length > 1) {
+    err('ls: invalid args')
+    return
   } else {
     window.location.href = window.location.origin + "/tags#" + cmd[0];
   }
@@ -281,6 +306,9 @@ function findCmd(cmd) {
         case 'regex':
           regex = true;
           break;
+        default:
+          err('find: invalid args')
+          return
       }
     } else if (c.startsWith('-')) {
       shortOptions += c.substring(1);
@@ -306,6 +334,9 @@ function findCmd(cmd) {
         case 'r':
           regex = true;
           break;
+        default:
+          err('find: invalid args')
+          return
     }
   }
 
@@ -318,14 +349,7 @@ function findCmd(cmd) {
   find(search, title, content, date, featured, regex);
 }
 
-function find(
-  search,
-  title,
-  content,
-  date,
-  featured,
-  regex
-) {
+function find(search, title, content, date, featured, regex) {
   const oldList = document.getElementById("list");
   const newList = document.createElement("ul");
   info('Searching...')
