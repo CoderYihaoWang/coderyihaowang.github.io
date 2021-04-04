@@ -349,3 +349,9 @@ a.tag.article-tag {
   font-size: 0.8em;
   font-weight: 100;
 }
+
+._404 {
+  color: var(--gray);
+  font-size: 5em;
+  font-family: var(--font-title);
+}
