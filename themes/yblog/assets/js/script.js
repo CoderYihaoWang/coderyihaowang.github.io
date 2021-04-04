@@ -472,7 +472,7 @@ function handleHelp(cmd) {
   if (cmd.length === 0) {
     window.location.href = window.location.origin + "/help";
   } else if (cmd.length === 1) {
-    window.location.href = window.location.origin + "/help#" + cmd[0];
+    window.location.href = window.location.origin + "/help#-" + cmd[0];
   } else {
     err("help: invalid args");
   }
