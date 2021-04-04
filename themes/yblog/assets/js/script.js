@@ -65,12 +65,14 @@ function info(message) {
   const command = document.getElementsByClassName("command-input")[0];
   command.classList.remove("error");
   command.placeholder = message;
+  command.title = message;
 }
 
 function err(message) {
   const command = document.getElementsByClassName("command-input")[0];
   command.classList.add("error");
   command.placeholder = message;
+  command.title = message;
 }
 
 function setCommandOpen(open) {

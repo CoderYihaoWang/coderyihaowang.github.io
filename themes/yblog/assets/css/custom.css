@@ -92,14 +92,24 @@ header a:active, header a:hover {
   align-items: center;
 }
 
+#title {
+  white-space: nowrap;
+}
+
 .command-container {
   color: var(--gray);
   font-size: 1.5em;
   cursor: pointer;
+  display: flex;
+  width: 100%;
 }
 
 .command-container:hover {
   color: var(--main);
+}
+
+.command {
+  padding: 0 0.5em;
 }
 
 .command-container .command {
@@ -120,7 +130,6 @@ header a:active, header a:hover {
 }
 
 .command-input {
-  width: 20em;
   border: none;
   color: var(--main);
   background-color: var(--bg);
@@ -141,7 +150,8 @@ header a:active, header a:hover {
 }
 
 .command-container.active .command-input {
-  display: unset;
+  display: block;
+  width: 100%;
 }
 
 .menu-items-container {
@@ -393,13 +403,9 @@ a.tag.article-tag {
   font-family: var(--font-title);
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 767px) {
   .article-table-of-contents {
     display: none;
     width: 0;
   }
-}
-
-@media (max-width: 700px) {
-
 }
