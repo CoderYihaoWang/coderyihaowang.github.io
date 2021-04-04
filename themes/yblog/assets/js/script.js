@@ -157,7 +157,7 @@ function handleCommand(command) {
   if (cmd.length < 1) {
     return;
   }
-  const rest = cmd.slice(1)
+  const rest = cmd.slice(1);
   switch (cmd[0]) {
     case "toc":
       handleToc(rest);
@@ -186,8 +186,11 @@ function handleCommand(command) {
     case "exit":
       handleExit(rest);
       break;
+    case "help":
+      handleHelp(rest);
+      break;
     default:
-      err("Unknown command (see `help`)");
+      err("unknown command (see `help`)");
   }
 }
 
@@ -199,7 +202,7 @@ function handleToc(cmd) {
   } else if (cmd[0] === "off") {
     setToc("false");
   } else {
-    err('toc: invalid args')
+    err("toc: invalid args");
   }
 }
 
@@ -211,16 +214,16 @@ function handleDark(cmd) {
   } else if (cmd[0] === "off") {
     setDark("false");
   } else {
-    err('dark: invalid args')
+    err("dark: invalid args");
   }
 }
 
 function handleCd(cmd) {
   if (cmd.length !== 1) {
-    err('cd: invalid args')
+    err("cd: invalid args");
     return;
   }
-  if (cmd[0] === "~" || cmd[0] === 'home') {
+  if (cmd[0] === "~" || cmd[0] === "home") {
     window.location.href = window.location.origin;
     return;
   }
@@ -229,24 +232,24 @@ function handleCd(cmd) {
 
 function handlePin(cmd) {
   if (cmd.length !== 0) {
-    err('pin: invalid args')
-    return
+    err("pin: invalid args");
+    return;
   }
   setSticky("true");
 }
 
 function handleUnpin(cmd) {
   if (cmd.length !== 0) {
-    err('unpin: invalid args')
-    return
+    err("unpin: invalid args");
+    return;
   }
   handleExit();
 }
 
 function handleExit(cmd) {
   if (cmd.length !== 0) {
-    err('exit: invalid args')
-    return
+    err("exit: invalid args");
+    return;
   }
   setSticky("false");
   setCommandOpen("false");
@@ -254,8 +257,8 @@ function handleExit(cmd) {
 
 function handleJson(cmd) {
   if (cmd.length !== 0) {
-    err('json: invalid args')
-    return
+    err("json: invalid args");
+    return;
   }
   window.location.href = window.location.origin + "/index.json";
 }
@@ -264,8 +267,8 @@ function handleLs(cmd) {
   if (cmd.length === 0) {
     window.location.href = window.location.origin + "/tags";
   } else if (cmd.length > 1) {
-    err('ls: invalid args')
-    return
+    err("ls: invalid args");
+    return;
   } else {
     window.location.href = window.location.origin + "/tags#" + cmd[0];
   }
@@ -273,7 +276,7 @@ function handleLs(cmd) {
 
 function handleFind(cmd) {
   window.location.href = window.location.origin + "/blog";
-  localStorage.setItem('find', cmd.join(' '))
+  localStorage.setItem("find", cmd.join(" "));
 }
 
 function findCmd(cmd) {
@@ -289,54 +292,54 @@ function findCmd(cmd) {
   let search = "";
 
   for (const c of commands) {
-    if (c.startsWith('--')) {
+    if (c.startsWith("--")) {
       switch (c.substring(2)) {
-        case 'title':
+        case "title":
           title = true;
           break;
-        case 'content':
+        case "content":
           content = true;
           break;
-        case 'date':
+        case "date":
           date = true;
           break;
-        case 'featured':
+        case "featured":
           featured = true;
           break;
-        case 'regex':
+        case "regex":
           regex = true;
           break;
         default:
-          err('find: invalid args')
-          return
+          err("find: invalid args");
+          return;
       }
-    } else if (c.startsWith('-')) {
+    } else if (c.startsWith("-")) {
       shortOptions += c.substring(1);
     } else {
-      search = c;
+      search = search + ' ' + c;
     }
   }
 
   for (const c of shortOptions) {
     switch (c) {
-      case 't':
-          title = true;
-          break;
-        case 'c':
-          content = true;
-          break;
-        case 'd':
-          date = true;
-          break;
-        case 'f':
-          featured = true;
-          break;
-        case 'r':
-          regex = true;
-          break;
-        default:
-          err('find: invalid args')
-          return
+      case "t":
+        title = true;
+        break;
+      case "c":
+        content = true;
+        break;
+      case "d":
+        date = true;
+        break;
+      case "f":
+        featured = true;
+        break;
+      case "r":
+        regex = true;
+        break;
+      default:
+        err("find: invalid args");
+        return;
     }
   }
 
@@ -346,112 +349,131 @@ function findCmd(cmd) {
     date = true;
   }
 
-  find(search, title, content, date, featured, regex);
+  find(search.trim(), title, content, date, featured, regex);
 }
 
 function find(search, title, content, date, featured, regex) {
   const oldList = document.getElementById("list");
   const newList = document.createElement("ul");
-  info('Searching...')
+  info("Searching...");
   fetch(`${window.location.origin}/index.json`)
-    .then(response => response.json())
-    .then(data => filter(data.blog, search, title, content, date, featured, regex))
-    .then(blog => {
-      const count = document.getElementsByClassName('list-count')[0]
-      count.textContent = `${blog.length} post${blog.length === 1 ? '' : 's'}`
-      fillBlog(newList, blog)
+    .then((response) => response.json())
+    .then((data) =>
+      filter(data.blog, search, title, content, date, featured, regex)
+    )
+    .then((blog) => {
+      const count = document.getElementsByClassName("list-count")[0];
+      count.textContent = `${blog.length} post${blog.length === 1 ? "" : "s"}`;
+      fillBlog(newList, blog);
       oldList.replaceWith(newList);
       return blog.length;
     })
-    .then(count => info(`${count} result${count === 1 ? '' : 's'}`))
+    .then((count) => info(`${count} result${count === 1 ? "" : "s"}`))
     .catch((e) => {
-      err('Error in searching...')
-      console.error(e)
-    })
+      err("Error in searching...");
+      console.error(e);
+    });
 }
 
 function filter(blog, search, title, content, date, featured, regex) {
   if (featured) {
-    blog = blog.filter(b => b.Parameters.featured === true)
+    blog = blog.filter((b) => b.Parameters.featured === true);
   }
+
   if (search.length === 0) {
-    return blog
+    return blog;
   }
 
-  const reg = new RegExp(search, 'i')
-  search = search.toLowerCase()
+  const reg = new RegExp(search, "i");
+  search = search.toLowerCase();
 
-  let filter = b => false;
+  let filter = (b) => false;
 
   if (title) {
     if (regex) {
-      filter = appendFilter(filter, b => reg.test(b.Title))
+      filter = appendFilter(filter, (b) => reg.test(b.Title));
     } else {
-      filter = appendFilter(filter, b => b.Title.toLowerCase().includes(search))
+      filter = appendFilter(filter, (b) =>
+        b.Title.toLowerCase().includes(search)
+      );
     }
   }
 
   if (content) {
     if (regex) {
-      filter = appendFilter(filter, b => reg.test(b.Content))
+      filter = appendFilter(filter, (b) => reg.test(b.Content));
     } else {
-      filter = appendFilter(filter, b => b.Content.toLowerCase().includes(search))
+      filter = appendFilter(filter, (b) =>
+        b.Content.toLowerCase().includes(search)
+      );
     }
   }
 
   if (date) {
     if (regex) {
-      filter = appendFilter(filter, b => reg.test(b.PublishDate))
+      filter = appendFilter(filter, (b) => reg.test(b.PublishDate));
     } else {
-      filter = appendFilter(filter, b => b.PublishDate.toLowerCase().includes(search))
+      filter = appendFilter(filter, (b) =>
+        b.PublishDate.toLowerCase().includes(search)
+      );
     }
   }
 
-  return blog.filter(b => filter(b))
+  return blog.filter((b) => filter(b));
 }
 
 function appendFilter(f, newF) {
-  return function(b) {
-    return f(b) || newF(b)
-  }
+  return function (b) {
+    return f(b) || newF(b);
+  };
 }
 
 function fillBlog(list, blog) {
   for (const b of blog) {
-    const li = document.createElement('li')
-    li.classList.add('list-item')
+    const li = document.createElement("li");
+    li.classList.add("list-item");
 
-    const time = document.createElement('div')
-    time.classList.add('list-time')
+    const time = document.createElement("div");
+    time.classList.add("list-time");
 
-    const timeSpan = document.createElement('span')
-    timeSpan.textContent = b.FormattedDate
-    time.appendChild(timeSpan)
+    const timeSpan = document.createElement("span");
+    timeSpan.textContent = b.FormattedDate;
+    time.appendChild(timeSpan);
 
-    li.appendChild(time)
+    li.appendChild(time);
 
-    const outerDiv = document.createElement('div')
-    const linkDiv = document.createElement('div')
+    const outerDiv = document.createElement("div");
+    const linkDiv = document.createElement("div");
 
-    const link = document.createElement('a')
-    link.textContent = b.Title
-    link.href = b.RelPermalink
-    linkDiv.appendChild(link)
-    outerDiv.appendChild(linkDiv)
+    const link = document.createElement("a");
+    link.textContent = b.Title;
+    link.href = b.RelPermalink;
+    linkDiv.appendChild(link);
+    outerDiv.appendChild(linkDiv);
 
-    const tagDiv = document.createElement('div')
+    const tagDiv = document.createElement("div");
     if (b.Parameters.tags) {
       for (const tag of b.Parameters.tags) {
-        const tagLink = document.createElement('a')
-        tagLink.textContent = tag
-        tagLink.href = "/tags#" + tag
-        tagLink.classList.add('tag')
-        tagDiv.appendChild(tagLink)
+        const tagLink = document.createElement("a");
+        tagLink.textContent = tag;
+        tagLink.href = "/tags#" + tag;
+        tagLink.classList.add("tag");
+        tagDiv.appendChild(tagLink);
       }
     }
-    outerDiv.appendChild(tagDiv)
+    outerDiv.appendChild(tagDiv);
 
-    li.appendChild(outerDiv)
-    list.appendChild(li)
+    li.appendChild(outerDiv);
+    list.appendChild(li);
+  }
+}
+
+function handleHelp(cmd) {
+  if (cmd.length === 0) {
+    window.location.href = window.location.origin + "/help";
+  } else if (cmd.length === 1) {
+    window.location.href = window.location.origin + "/help#" + cmd[0];
+  } else {
+    err("help: invalid args");
   }
 }
