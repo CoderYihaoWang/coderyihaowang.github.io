@@ -1,7 +1,7 @@
 baseURL = "http://example.com"
 languageCode = "en-us"
 title = "Yihao"
-theme = "yblog"
+theme = "yBlog"
 
 pygmentsUseClasses = true
 

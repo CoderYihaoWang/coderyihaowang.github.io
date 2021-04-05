@@ -1,0 +1,3 @@
+[submodule "themes/yBlog"]
+	path = themes/yBlog
+	url = https://github.com/CoderYihaoWang/yBlog.git
