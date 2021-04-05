@@ -1,7 +1,9 @@
-baseURL = "http://example.com"
+baseURL = "http://coderyihaowang.github.io"
 languageCode = "en-us"
 title = "Yihao"
 theme = "yBlog"
+
+commitBaseURL = "http://"
 
 pygmentsUseClasses = true
 
@@ -43,6 +45,6 @@ home = [
 [params]
   footer = [
     "Made with [Hugo](https://gohugo.io/) &bull;",
-    "Themed with [YBlog](#) &bull;",
-    "Content in [GitHub](#)"
+    "Themed with [YBlog](https://github.com/CoderYihaoWang/yBlog) &bull;",
+    "Content in [GitHub](https://)"
   ]
