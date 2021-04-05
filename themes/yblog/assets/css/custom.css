@@ -29,7 +29,7 @@ body {
   background-color: var(--bg);
   font-family: var(--font-main);
   line-height: 1.5;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 nav li {
@@ -38,7 +38,6 @@ nav li {
 
 code {
   font-family: var(--font-mono);
-  font-size: 0.9em;
 }
 
 pre.chroma {
@@ -234,7 +233,7 @@ footer a:active {
 
 .article-table-of-contents {
   position: sticky;
-  font-size: 0.8em;
+  font-size: 0.9em;
   top: 4em;
   padding: 4em 0;
   margin: 6em 0;
@@ -302,7 +301,7 @@ h6 {
 }
 
 p {
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 a,
@@ -432,7 +431,7 @@ a.tag.article-tag {
   font-family: var(--font-title);
 }
 
-@media (max-width: 767px) {
+@media only screen and (max-width: 767px) {
   .article-table-of-contents {
     display: none;
     width: 0;

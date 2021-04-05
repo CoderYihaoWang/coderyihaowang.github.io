@@ -12,10 +12,15 @@ Here are some frequently used commands to get you started:
 
 ```shell
 > ls golang       # list all articles with the `golang` tag
+
 > find golang     # find all articles with `golang` in the title or content
+
 > cd blog         # go to the `Blog` page
+
 > dark            # toggle dark mode
+
 > toc             # toggle the display of table of contents
+
 > exit            # exit command pallete mode
 ```
 
