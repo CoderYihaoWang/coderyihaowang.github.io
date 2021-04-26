@@ -1,0 +1,95 @@
+<!doctype html><html class=sticky id=root><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=canonical href=http://coderyihaowang.github.io/help/><meta name=generator content="Hugo 0.82.1"><title>Yihao | Command Pallete Reference Manual</title><link rel=stylesheet href=/css/normalize.min.css><link rel=stylesheet href=/css/chroma.min.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=JetBrains+Mono"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Ubuntu"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Lora"><link rel=stylesheet href=/css/custom.min.css><style>body{visibility:hidden;opacity:0}</style><script>window.baseURL="http://coderyihaowang.github.io"</script></head><body><header><div class=menu-container><span class=command-container><span title="Command Pallete" id=title>Yihao
+<span class=command>></span></span>
+<input id=command class=command-input></input></span><nav class=menu-items-container><li><a class=menu-item href=/><span>Home</span></a></li><li><a class="menu-item current" href=/blog/><span>Blog</span></a></li><li><a class=menu-item href=/tags/><span>Tags</span></a></li><li><a class=menu-item href=/projects><span>Projects</span></a></li></nav><a href=javascript:void(0) onclick=menu() class=icon>&#9776;</a></div></header><div id=content><div class=article-container><div class=article-table-of-contents-container><div class=article-table-of-contents><nav id=TableOfContents><ul><li><a href=#quick-start>Quick Start</a></li><li><a href=#detailed-usages>Detailed Usages</a><ul><li><a href=#-help>> help</a></li><li><a href=#-cd>> cd</a></li><li><a href=#-ls>> ls</a></li><li><a href=#-find>> find</a></li><li><a href=#-exit>> exit</a></li><li><a href=#-pin>> pin</a></li><li><a href=#-unpin>> unpin</a></li><li><a href=#-dark>> dark</a></li><li><a href=#-toc>> toc</a></li><li><a href=#-json>> json</a></li></ul></li></ul></nav></div></div><div class=article-main><h1 class=article-title>Command Pallete Reference Manual</h1><div class=article-info-container><span class=article-info>647 words</span> &bull;
+<span class=article-info>4 min reading</span> &bull;
+<span class=article-info>Published: Apr 4, 2021</span> &bull;
+<span class=article-info>Last modified: Apr 26, 2021</span><div class=article-tags-container></div></div><div class=article-content-container><h2 id=quick-start>Quick Start</h2><p>Here are some frequently used commands to get you started:</p><div class=highlight><pre class=chroma><code class=language-shell data-lang=shell>&gt; ls golang       <span class=c1># list all articles with the `golang` tag</span>
+
+&gt; find golang     <span class=c1># find all articles with `golang` in the title or content</span>
+
+&gt; <span class=nb>cd</span> blog         <span class=c1># go to the `Blog` page</span>
+
+&gt; dark            <span class=c1># toggle dark mode</span>
+
+&gt; toc             <span class=c1># toggle the display of table of contents</span>
+
+&gt; <span class=nb>exit</span>            <span class=c1># exit command pallete mode</span>
+</code></pre></div><h2 id=detailed-usages>Detailed Usages</h2><h3 id=-help>> help</h3><p>Display the usage of a certain command.</p><p><strong>Usage</strong>:</p><div class=highlight><pre class=chroma><code class=language-shell data-lang=shell>&gt; <span class=nb>help</span> <span class=o>[</span>command<span class=o>]</span> <span class=c1># Display the usage of a certain command</span>
+</code></pre></div><p><strong>Examples</strong>:</p><div class=highlight><pre class=chroma><code class=language-shell data-lang=shell>&gt; <span class=nb>help</span>           <span class=c1># Display this help page</span>
+&gt; <span class=nb>help</span> find      <span class=c1># Display the usage of `find` command</span>
+</code></pre></div><h3 id=-cd>> cd</h3><p>Go to a page.</p><p><strong>Usage</strong>:</p><div class=highlight><pre class=chroma><code class=language-shell data-lang=shell>&gt; <span class=nb>cd</span> &lt;page&gt;       <span class=c1># Go to a particular page</span>
+</code></pre></div><p><strong>Examples</strong>:</p><div class=highlight><pre class=chroma><code class=language-shell data-lang=shell>&gt; <span class=nb>cd</span> blog         <span class=c1># Go to the `Blog` page</span>
+&gt; <span class=nb>cd</span> ~            <span class=c1># Go to home page</span>
+&gt; <span class=nb>cd</span> some-article <span class=c1># Go to the blog with the title `Some Article`</span>
+</code></pre></div><h3 id=-ls>> ls</h3><p>List all articles with a particular tag.</p><p><strong>Usage</strong>:</p><div class=highlight><pre class=chroma><code class=language-shell data-lang=shell>&gt; ls <span class=o>[</span>tag<span class=o>]</span>        <span class=c1># List all articles with a particular tag</span>
+</code></pre></div><p><strong>Examples</strong>:</p><div class=highlight><pre class=chroma><code class=language-shell data-lang=shell>&gt; ls              <span class=c1># Go to the tags listing page (equivalent to `cd tags`)</span>
+&gt; ls golang       <span class=c1># List all ariticles with the tag `golang`</span>
+</code></pre></div><h3 id=-find>> find</h3><p>Search articles.</p><p><strong>Usage</strong>:</p><div class=highlight><pre class=chroma><code class=language-shell data-lang=shell>&gt; find <span class=o>[</span>--title<span class=o>]</span> <span class=o>[</span>-t<span class=o>]</span> 
+       <span class=o>[</span>--content<span class=o>]</span> <span class=o>[</span>-c<span class=o>]</span> 
+       <span class=o>[</span>--date<span class=o>]</span> <span class=o>[</span>-d<span class=o>]</span>
+       <span class=o>[</span>--featured<span class=o>]</span> <span class=o>[</span>-f<span class=o>]</span> 
+       <span class=o>[</span>--regex<span class=o>]</span> <span class=o>[</span>-r<span class=o>]</span> 
+       <span class=o>[</span>searchQuery<span class=o>]</span>
+
+<span class=c1># List all articles that contains the `searchQuery` argument</span>
+
+<span class=c1># When --title or -t is presenet, search in title;</span>
+<span class=c1># When --content or -c is present, search in content;</span>
+<span class=c1># When --date or -d is present, search in date.</span>
+
+<span class=c1># The above three arguments can be used in combination,</span>
+<span class=c1># When none of the three is present, the search is done in title, content AND date</span>
+
+<span class=c1># When --featured or -f is present, only show the articles with</span>
+<span class=c1>#   `featured` parameter set to `true`</span>
+
+<span class=c1># When --regex or -r is present, the `searchQuery` argument is</span>
+<span class=c1>#   treated as a regular expression</span>
+
+<span class=c1># When the `searchQuery` argument is not given, it matches any article</span>
+
+<span class=c1># The `seatchQuery` argument can be multiple words, the order is preserved</span>
+</code></pre></div><p><strong>Examples</strong>:</p><div class=highlight><pre class=chroma><code class=language-shell data-lang=shell><span class=c1># Find all articles that contain the key word `golang` in title, content or date</span>
+&gt; find golang  
+
+<span class=c1># Find articles that contains `golang` only in title</span>
+&gt; find golang --title
+&gt; find --title golang <span class=c1># same as above</span>
+&gt; find -t golang      <span class=c1># same as above</span>
+
+<span class=c1># Find articles that contains `2021` in content or title, but don&#39;t search in date</span>
+&gt; find <span class=m>2021</span> --title --content
+&gt; find <span class=m>2021</span> -t -c <span class=c1># same as above</span>
+&gt; find <span class=m>2021</span> -tc   <span class=c1># same as above</span>
+
+<span class=c1># Find articles whose title starts with `JavaScript` or `TypeScript`</span>
+&gt; find ^<span class=o>(</span>Java<span class=p>|</span>Type<span class=o>)</span>Script --regex --title
+&gt; find -tr ^<span class=o>(</span>Java<span class=p>|</span>Type<span class=o>)</span>Script <span class=c1># same as above</span>
+
+<span class=c1># Find articles that contain `command line` in the content</span>
+&gt; find -c <span class=nb>command</span> line
+
+<span class=c1># Find all featured articles</span>
+&gt; find --featured
+&gt; find -f
+
+<span class=c1># Find all articles (equivalent to `cd blog`)</span>
+&gt; find
+</code></pre></div><h3 id=-exit>> exit</h3><p>Exit command pallete mode and unpin the top bar.</p><p><strong>Usage</strong>:</p><div class=highlight><pre class=chroma><code class=language-shell data-lang=shell>&gt; <span class=nb>exit</span>
+</code></pre></div><h3 id=-pin>> pin</h3><p>Pin the top bar.</p><p><strong>Usage</strong>:</p><div class=highlight><pre class=chroma><code class=language-shell data-lang=shell>&gt; pin
+</code></pre></div><h3 id=-unpin>> unpin</h3><p>Unpin the top bar and exit command pallete mode, equivalent to <code>exit</code></p><p><strong>Usage</strong>:</p><div class=highlight><pre class=chroma><code class=language-shell data-lang=shell>&gt; unpin
+</code></pre></div><h3 id=-dark>> dark</h3><p>Set dark mode.</p><p><strong>Usage</strong>:</p><div class=highlight><pre class=chroma><code class=language-shell data-lang=shell>&gt; dark <span class=o>[</span>on<span class=p>|</span>off<span class=o>]</span>      <span class=c1># Set or toggle dark mode</span>
+</code></pre></div><p><strong>Examples</strong>:</p><div class=highlight><pre class=chroma><code class=language-shell data-lang=shell>&gt; dark               <span class=c1># Toggle dark mode</span>
+&gt; dark on            <span class=c1># Turn on dark mode</span>
+&gt; dark off           <span class=c1># Turn off dark mode</span>
+</code></pre></div><h3 id=-toc>> toc</h3><p>Set the display of table of contents.</p><p><em>Note: Table of contents can only be displayed for articles (not <code>home</code> page or <code>projects</code>)</em></p><p><strong>Usage</strong>:</p><div class=highlight><pre class=chroma><code class=language-shell data-lang=shell>&gt; toc <span class=o>[</span>on<span class=p>|</span>off<span class=o>]</span>      <span class=c1># Set or toggle the display of table on contents</span>
+</code></pre></div><p><strong>Examples</strong>:</p><div class=highlight><pre class=chroma><code class=language-shell data-lang=shell>&gt; toc               <span class=c1># Toggle the display oftable of contents</span>
+&gt; toc on            <span class=c1># Turn on table of contents</span>
+&gt; toc off           <span class=c1># Turn off table of contents</span>
+</code></pre></div><h3 id=-json>> json</h3><p>Retrieve the JSON representation of this blog site.</p><p><strong>Usage</strong>:</p><div class=highlight><pre class=chroma><code class=language-shell data-lang=shell>&gt; json
+</code></pre></div></div><div class=article-footer-container><span>Prev:<a href=http://coderyihaowang.github.io/projects/> Projects</a></span>
+<span></span></div></div><div></div></div></div><footer><div><span>Made with <a href=https://gohugo.io/>Hugo</a> •</span>
+<span>Themed with <a href=https://github.com/CoderYihaoWang/yBlog>YBlog</a> •</span>
+<span>Content in <a href=https://>GitHub</a></span></div><div><span>Last updated Apr 26, 2021</span>
+<span>&bull; Commit <a href=/commit/13cb6612fd329d602e5ed30749048a2318603042>13cb661</a>:
+Remove placeholder blogs; move articles into subfolder</span></div></footer><script src=/js/script.min.js></script></body></html>
