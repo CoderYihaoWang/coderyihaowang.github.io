@@ -7,4 +7,4 @@ draft: false
 
 > Go fast by going well.  -- Uncle Bob
 
-Hi there! Welcome come to my blog.
+Some interesing introduction of myself will turn up here...
