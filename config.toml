@@ -45,6 +45,6 @@ home = [
 [params]
   footer = [
     "Made with [Hugo](https://gohugo.io/) &bull;",
-    "Themed with [YBlog](https://github.com/CoderYihaoWang/yBlog) &bull;",
+    "Themed with [yBlog](https://github.com/CoderYihaoWang/yBlog) &bull;",
     "Content in [GitHub](https://github.com/CoderYihaoWang/coderyihaowang.github.io)"
   ]
