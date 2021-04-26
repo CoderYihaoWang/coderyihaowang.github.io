@@ -8,7 +8,7 @@
     <span> Last updated {{ .Lastmod.Format "Jan 2, 2006" }} </span>
     {{ if .GitInfo }}
     <span>
-      &bull; Commit <a href="#">{{ .GitInfo.AbbreviatedHash }}</a>: 
+      &bull; Commit <a href="{{- .Site.Params.CommitBaseURL -}}/commit/{{- .GitInfo.Hash -}}">{{ .GitInfo.AbbreviatedHash }}</a>: 
       {{ .GitInfo.Subject }}
     </span>
     {{ end }}

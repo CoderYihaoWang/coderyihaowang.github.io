@@ -8,6 +8,8 @@
 <div class="article-main">
   <h1 class="article-title">{{ .Title }}</h1>
   <div class="article-info-container">
+    <span class="article-info">{{ .WordCount }} words</span> &bull;
+    <span class="article-info">{{ .ReadingTime }} min reading</span> &bull;
     <span class="article-info">Published: {{ .PublishDate.Format "Jan 2, 2006" }}</span> &bull;
     <span class="article-info">Last modified: {{ .Lastmod.Format "Jan 2, 2006" }}</span>
     <div class="article-tags-container">
@@ -18,6 +20,18 @@
   </div>
   <div class="article-content-container">
   {{ .Content }}
+  </div>
+  <div class="article-footer-container">
+    {{ if .PrevInSection }}
+      <span>Prev:<a href="{{ .PrevInSection.Permalink }}"> {{ .PrevInSection.Title }}</a></span>
+    {{ else }}
+      <span></span>
+    {{ end }}
+    {{ if .NextInSection }}
+      <span>Next: <a href="{{ .NextInSection.Permalink }}"> {{ .NextInSection.Title }}</a></span>
+    {{ else }}
+      <span></span>
+    {{ end }}
   </div>
 </div>
 <div></div>

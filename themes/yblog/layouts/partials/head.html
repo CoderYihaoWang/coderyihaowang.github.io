@@ -12,16 +12,22 @@
     {{ $chroma := resources.Get "/css/chroma.css" | minify }}
     <link rel="stylesheet" href="{{ $chroma.RelPermalink }}">
 
-    {{ $fonts := resources.Get "/css/fonts.css" | minify}}
-    <link rel="stylesheet" href="{{ $fonts.RelPermalink }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
 
     {{ $custom := resources.Get "/css/custom.css" | minify}}
     <link rel="stylesheet" href="{{ $custom.RelPermalink }}">
 
     <style>
-        body {
-          visibility: hidden;
-          opacity: 0;
-        }
-      </style>
+      body {
+        visibility: hidden;
+        opacity: 0;
+      }
+    </style>
+
+    <script>
+      window.baseURL = {{ site.BaseURL }}
+    </script>
 </head>

@@ -233,10 +233,10 @@ function handleCd(cmd) {
     return;
   }
   if (cmd[0] === "~" || cmd[0] === "home") {
-    window.location.href = window.location.origin;
+    window.location.href = window.baseURL;
     return;
   }
-  window.location.href = window.location.origin + "/" + cmd[0];
+  window.location.href = window.baseURL + "/" + cmd[0];
 }
 
 function handlePin(cmd) {
@@ -272,24 +272,24 @@ function handleJson(cmd) {
     err("json: invalid args");
     return;
   }
-  window.location.href = window.location.origin + "/index.json";
+  window.location.href = window.baseURL + "/index.json";
   info("Enter command here (try `help`)")
 }
 
 function handleLs(cmd) {
   if (cmd.length === 0) {
-    window.location.href = window.location.origin + "/tags";
+    window.location.href = window.baseURL + "/tags";
   } else if (cmd.length > 1) {
     err("ls: invalid args");
     return;
   } else {
-    window.location.href = window.location.origin + "/tags#" + cmd[0];
+    window.location.href = window.baseURL + "/tags#" + cmd[0];
   }
   info("Enter command here (try `help`)")
 }
 
 function handleFind(cmd) {
-  window.location.href = window.location.origin + "/blog";
+  window.location.href = window.baseURL + "/blog";
   localStorage.setItem("find", cmd.join(" "));
 }
 
@@ -370,7 +370,7 @@ function find(search, title, content, date, featured, regex) {
   const oldList = document.getElementById("list");
   const newList = document.createElement("ul");
   info("Searching...");
-  fetch(`${window.location.origin}/index.json`)
+  fetch(`${window.baseURL}/index.json`)
     .then((response) => response.json())
     .then((data) =>
       filter(data.blog, search, title, content, date, featured, regex)
@@ -484,9 +484,9 @@ function fillBlog(list, blog) {
 
 function handleHelp(cmd) {
   if (cmd.length === 0) {
-    window.location.href = window.location.origin + "/help";
+    window.location.href = window.baseURL + "/help";
   } else if (cmd.length === 1) {
-    window.location.href = window.location.origin + "/help#-" + cmd[0];
+    window.location.href = window.baseURL + "/help#-" + cmd[0];
   } else {
     err("help: invalid args");
     return

@@ -7,10 +7,10 @@
   --info-highlight: #f0f0f0;
   --err: #cc2f2f;
   --border: #ddd;
-  --font-main: "Roboto";
-  --font-mono: "JetBrains Mono";
-  --font-title: "Ubuntu";
-  --font-quote: "Lora";
+  --font-main: "Roboto", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-title: "Ubuntu", sans-serif;
+  --font-quote: "Lora", serif;
 }
 
 .dark:root {
@@ -29,7 +29,7 @@ body {
   background-color: var(--bg);
   font-family: var(--font-main);
   line-height: 1.5;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 nav li {
