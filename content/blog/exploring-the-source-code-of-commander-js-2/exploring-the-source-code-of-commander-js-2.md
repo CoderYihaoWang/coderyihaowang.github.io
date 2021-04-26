@@ -2,7 +2,7 @@
 title: "Exploring the Source Code of Commander.js: Part 2"
 date: 2021-04-27T09:58:03+12:00
 tags: ["source-code-reading", "javascript", "nodejs", "commanderjs", "cli"]
-featured: false
+featured: true
 draft: true
 ---
 
