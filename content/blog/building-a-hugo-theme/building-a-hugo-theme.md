@@ -3,7 +3,7 @@ title: "Building a Hugo Theme"
 date: 2021-04-10T10:04:02+12:00
 tags: ["hugo", "go", "theme"]
 featured: false
-draft: true
+draft: false
 ---
 
 I've built a [Hugo](https://gohugo.io/) theme, [yBlog](https://coderyihaowang.github.io/yBlog), for my personal blog. Here are some take-aways.
