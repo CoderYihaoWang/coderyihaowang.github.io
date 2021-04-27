@@ -10,7 +10,7 @@ I've built a [Hugo](https://gohugo.io/) theme, [yBlog](https://coderyihaowang.gi
 
 ## Mental model
 
-As a content writer, we write contents in markdown, put them in correct folders, add some meta-data in front matter, and that's it. Hugo takes care of everything else for us. But if we want to build our own themes, we need to understand a bit more about how Hugo works behind the scenes. The below diagram show my mental model when I use Hugo:
+As a content writer, we write contents in markdown, put them in correct folders, add some meta-data in front matter, and that's it. Hugo takes care of everything else for us. But if we want to build our own themes, we need to understand a bit more about how Hugo works behind the scenes. The below diagram shows my mental model when I use Hugo:
 
 ![](/images/building-a-hugo-theme/Hugo-mental-model.png)
 
@@ -30,7 +30,7 @@ So, let's have a closer look at the data flow around this model, it can be separ
 
 Information is the raw material for building the website. They come from 3 sources: the content markdown files, the `config.toml/yaml/json` file, and the Hugo engine.
 
-### Information in contents
+### Information from contents
 
 The most notable piece of information is the markdown content itself. This content will be available as a page variable, and can be retrieved using `.Content` in the page template (will explain shortly).
 
@@ -38,7 +38,7 @@ We are also able to provide other information that is specific to a particular p
 
 Other than these predefined fields, we can also add whatever information we want to front matter. These user-defined fields will also be available in the page template. They are grouped together in the `.Params` field. For example, if we add a `note` field to front matter, as this is not Hugo predefiend, we can later use it via `.Params.Note` in the templates.
 
-### Information in config
+### Information from config
 
 We'll also need some information that are website-wise, for example, the base URL of the website, the website's author, etc. They belong to the `config.toml` file. When you provide these fields in the config file, they become available via the `.Site` template variable. For example, `baseURL = 'https://my.domain'` in `config.toml` becomes `.Site.BaseURL` in the templates.
 
