@@ -12,7 +12,7 @@ I've built a [Hugo](https://gohugo.io/) theme, [yBlog](https://coderyihaowang.gi
 
 As a content writer, we write contents in markdown, put them in correct folders, add some meta-data in front matter, and that's it. Hugo takes care of everything else for us. But if we want to build our own themes, we need to understand a bit more about how Hugo works behind the scenes. The below diagram show my mental model when I use Hugo:
 
-![](./Hugo-mental-model.png)
+![](/images/Hugo-mental-model.png)
 
 This is perhaps an over-simplified version of Hugo's work flow. If you look at [Hugo's source code](https://github.com/gohugoio/hugo), you'll find the actual implementation much more complicated. But I find this mental model helpful for getting us thinking in Hugo. 
 
