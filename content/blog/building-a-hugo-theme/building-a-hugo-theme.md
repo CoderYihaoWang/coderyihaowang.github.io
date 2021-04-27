@@ -6,7 +6,7 @@ featured: false
 draft: true
 ---
 
-I've built a [Hugo](https://gohugo.io/) theme, [yBlog](https://coderyihaowang.github.io/yBlog), for my personal blog. Here are some takeaways.
+I've built a [Hugo](https://gohugo.io/) theme, [yBlog](https://coderyihaowang.github.io/yBlog), for my personal blog. Here are some take-aways.
 
 ## Mental model
 
@@ -16,7 +16,7 @@ As a content writer, we write contents in markdown, put them in correct folders,
 
 This is perhaps an over-simplified version of Hugo's work flow. If you look at [Hugo's source code](https://github.com/gohugoio/hugo), you'll find the actual implementation much more complicated. But I find this mental model helpful for getting us thinking in Hugo. 
 
-To summarise Hugo's model in one sentence: **everything is a page**, and every page has a corresponding model that provides all the information needed to render it. This model is really the central piece of Hugo's flow. Everything you write will become its fields, and everything you see on the rendered pages are retrieved from it. You provide data to the model by writing markdown (including front matter), and you retrieve data in the templates by accessing the model's fields and methods. But please note that this "model" only exists in our mental model, the real implementation is much more sophisticated. You can refer to [variables in hugo](https://gohugo.io/variables/), they are corresponding to the "fields" that we are talking about here.
+To summarise Hugo's model in one sentence: **everything is a page**, and every page has a corresponding model that provides all the information needed to render it. This model is really the central piece of Hugo's flow. Everything you write will become its fields, and everything you see on the rendered pages are retrieved from it. You provide data to the model by writing markdown (including front matter), and you retrieve data in the templates by accessing the model's fields and methods. Unfortunately, you won't be able to find this "model" in any documentation, because it only exists in our mental model, the real implementation is much more sophisticated. You can refer to [variables in hugo](https://gohugo.io/variables/), they are corresponding to the model "fields" that we are talking about here.
 
 So, let's have a closer look at the data flow around this model, it can be separated into three steps (as shown in the diagram above):
 
@@ -50,9 +50,9 @@ During the building process, Hugo also adds a great amount of helpful informatio
 
 The information gathered from the above step will be grouped into models and dispatched to templates. Basically, the templates come in two versions (`Kind`s, in Hugo's term): single page templates and list templates.
 
-**Single page templates** display individual contents. For example, a single markdown file that you put under the contents folder, will be forwarded to a single page template.
+**Single page templates** display individual contents. For example, a single markdown file that you put under the contents folder will be forwarded to a single page template.
 
-**List templates** don't display the content of an individual content file; they are used to provide a summary page of a certain collection. For example, section, taxonomy, etc. That said, you CAN create a file corresponding to a particular list template; this way, you can provide front matter to the model of a list page. [see here](https://gohugo.io/templates/lists/#add-content-and-front-matter-to-list-pages)
+**List templates** don't display the content of an individual content file; they are used to provide a summary page of a certain collection. For example, section, taxonomy, etc. For example, the [blogs](https://coderyihaowang.github.io/yBlog/blog) page of the example site of my theme is rendered by a list template. That said, you CAN create a file corresponding to a particular list template; this way, you can provide front matter to the model of a list page. [see here](https://gohugo.io/templates/lists/#add-content-and-front-matter-to-list-pages)
 
 By default, you should see these three default template files under the `layouts/_default` folder:
 
@@ -88,7 +88,7 @@ Hugo's templates can be embedded and make use of [partials](https://gohugo.io/te
 </html>
 ```
 
-The `{{- block "main" . }}{{- end }}` part shows how to embed a template. My `_default/single.html` file is defined as:
+The `{{- block "main" . }}{{- end }}` part shows how to use blocks to define the outer shell of a template. My `_default/single.html` is defined as:
 
 ```html
 {{ define "main" }}
@@ -96,7 +96,7 @@ The `{{- block "main" . }}{{- end }}` part shows how to embed a template. My `_d
 {{ end }}
 ```
 
-The content of the single page template will be inserted into `baseof.html` template in the `block "main" .` part. The dot (`.`) after `"main"` is the context passed to embedded templates (similar to function argument, but each template only has one context).
+The content of the single page template will be embedded into `baseof.html` template in the `block "main" .` part. The dot (`.`) after `"main"` is the context passed to embedded templates (similar to function argument, but each template only has one context). You can read more about base template and blocks [here](https://gohugo.io/templates/base/)
 
 The `{{- partial "script.html" . -}}` part shows how to use partial templates. I have created a `script.html` template under the `partials` folder with the following content:
 
@@ -105,8 +105,10 @@ The `{{- partial "script.html" . -}}` part shows how to use partial templates. I
 <script src="{{ $script.RelPermalink }}"></script>
 ```
 
-This piece will be inserted into the `partial "script.html ."` part.
+This piece will be inserted into the `partial "script.html ."` part. This way, we can decouple parts of a template and improve maintainability.
+
+You can read more about partial templates [here](https://gohugo.io/templates/partials/).
 
 ## Wrap up
 
-Right, that's it. This article is not a step-by-step toturial but aims to provide a high level overview of how Hugo works. It summarises what I learned so far, and hopefully it will be useful when I leave Hugo for some time and come back one day. For detailed information on Hugo, go to the [documentation](https://gohugo.io/documentation/), and they also have a good [tutorial](https://gohugo.io/getting-started/quick-start/) to get you started.
+Right, that's it. This article is not a step-by-step toturial but aims to provide a high level overview of how Hugo works. There are a lot of details I cannot cover here, but it summarises what I learned so far, and hopefully it will be useful when I leave Hugo for some time and come back one day. For detailed information on Hugo, go to the [documentation](https://gohugo.io/documentation/), and they also have a good [tutorial](https://gohugo.io/getting-started/quick-start/) to get you started.
